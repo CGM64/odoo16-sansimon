@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--Acción-->
+    <record id="corte_caja_action" model="ir.actions.act_window">
+        <field name="name">Corte de Caja</field>
+        <field name="res_model">corte.caja</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+      Crea un nuevo corte de caja.
+            </p>
+        </field>
+    </record>
+
+    <!--item en el menú proveedores-->
+    	
+    <menuitem name="Corte de Caja" id="menu_account_payment_item" action="corte_caja_action" parent="sale.menu_sale_invoicing" />
+    <!-- <menuitem name="Corte de Caja" id="menu_account_payment_item" action="corte_caja_action" parent="account.menu_finance_receivables" /> -->
+
+    <!-- VISTA DE ARBOL INICIAL DE LA CONVERSION -->
+    <record id="corte_caja_view_tree" model="ir.ui.view">
+        <field name="name">corte.caja.view.form</field>
+        <field name="model">corte.caja</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="user_id" />
+                <field name="fecha_inicio" />
+                <field name="total_corte" />
+                <field name="company_id" groups="base.group_multi_company" optional="hide"/>
+                <field name="state"  />
+            </tree>
+        </field>
+    </record>
+
+    <!--Vista del Detalle -->
+    <record id="corte_caja_detalle_view_tree" model="ir.ui.view">
+        <field name="name">corte.caja.detalle.view_tree</field>
+        <field name="model">corte.caja.detalle</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="account_payment_line_id"/>
+                <field name="payment_date"/>
+                <field name="circular"/>
+                <field name="partner_id"/>
+                <field name="journal_id"/>
+                <field name="amount"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="corte_caja_detalle_view_form" model="ir.ui.view">
+        <field name="name">corte.caja.detalle.view.form</field>
+        <field name="model">corte.caja.detalle</field>
+        <field name="arch" type="xml">
+            <form string="Corte de Caja" class="o_expense_form">
+                <sheet>
+                    <group>
+                        <field name="account_payment_line_id"/>
+                        <field name="payment_date"/>
+                        <field name="circular"/>
+                        <field name="partner_id"/>
+                        <field name="journal_id"/>
+                        <field name="amount"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <!--Vista del Resumen -->
+    <record id="corte_caja_resumen_view_tree" model="ir.ui.view">
+        <field name="name">corte.caja.resumen.view_tree</field>
+        <field name="model">corte.caja.resumen</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="journal_id"/>
+                <field name="amount"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--Vista del Facturas -->
+    <record id="corte_caja_factura_view_tree" model="ir.ui.view">
+        <field name="name">corte.caja.factura.view_tree</field>
+        <field name="model">corte.caja.factura</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="account_move_line_id"/>
+                <field name="date"/>
+                <field name="partner_id"/>
+                <field name="amount_total"/>
+                <field name="amount_residual"/>
+                <field name="invoice_payment_state"/>                
+            </tree>
+        </field>
+    </record>
+
+    <record id="corte_caja_view_form" model="ir.ui.view">
+        <field name="name">corte.caja.view.form</field>
+        <field name="model">corte.caja</field>
+        <field name="arch" type="xml">
+            <form string="Corte de Caja" class="o_expense_form">
+                <header>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,cancel,confirm"/>
+
+                    <button name="action_draft" string="Cambiar a Borrador" type="object" attrs="{'invisible':[('state','=','draft')]}"/>
+                    <button name="action_confirm" string="Confirmar" type="object" attrs="{'invisible':[('state','!=','draft')]}"/>
+                    <button name="action_cancel" string="Cancelar" type="object" attrs="{'invisible':[('state','!=','confirm')]}"/>
+                    <button name="download_report" type="object" string="Descargar Reporte" class="oe_highlight" icon="fa-download" attrs="{'invisible':[('state','!=','confirm')]}"/>
+                    <button name="action_procesar" type="object" string="Consultar" class="oe_highlight" icon="fa-search" attrs="{'invisible':[('state','!=','draft')]}"/>
+                    <!-- <button name="listado_anticipos" type="object" string="Test" class="oe_highlight" icon="fa-search" /> -->
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1>
+                            <field name="name" placeholder="e.j. Descripción del gasto"/>
+                        </h1>
+                        <field name="company_id" invisible="0"/>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="user_id" options="{'no_create': True}"/>
+                            <field name="journal_id" options="{'no_create': True}"/>
+                        </group>
+                        <group>
+                            <field name="fecha_inicio"/>
+                            <field name="fecha_fin"/>
+                        </group>
+                    </group>
+
+
+                    <notebook>
+                        <page string="Resumen">
+                            <field name="corte_caja_resumen_ids" options ="{'no_open':true, 'no_quick_create':true,'no_create_edit':true,'no_create':true}" context="{'tree_view_ref': 'corte_caja.corte_caja_resumen_view_tree'}" />
+                            <group name="resumen_group" col="6">
+                                <group colspan="4">
+
+                                </group>
+                                <group class="oe_subtotal_footer oe_right" colspan="2" name="">
+                                    <div class="oe_inline o_td_label">
+                                        <label for="total_corte" />
+                                    </div>
+                                    <field name="total_corte" nolabel="1" class="" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+                                </group>
+                                <div class="oe_clear"/>
+                            </group>
+                        </page>
+                        <page string="Detalle">
+                            <field name="corte_caja_ids" options ="{'no_open':true, 'no_quick_create':true,'no_create_edit':true,'no_create':true}" context="{'tree_view_ref': 'corte_caja.corte_caja_detalle_view_tree'}" />
+                        </page>
+
+                        <page string="Facturas">
+                            <field name="corte_caja_factura_ids" options ="{'no_open':true, 'no_quick_create':true,'no_create_edit':true,'no_create':true}" context="{'tree_view_ref': 'corte_caja.corte_caja_factura_view_tree'}" />
+                            <group name="factura_group" col="6">
+                                <group colspan="4">
+
+                                </group>
+                                <group class="oe_subtotal_footer oe_right" colspan="2" name="">
+                                    <div class="oe_inline o_td_label">
+                                        <label for="total_facturas" />
+                                    </div>
+                                    <field name="total_facturas" nolabel="1" class="" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+                                </group>
+                                <div class="oe_clear"/>
+                            </group>
+                        </page>
+
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

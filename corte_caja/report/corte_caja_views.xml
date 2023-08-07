@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <report
+    id="corte_caja_report_pdf"
+    model="corte.caja"
+    string="Corte de Caja (PDF)"
+    report_type="qweb-pdf"
+    name="corte_caja.report_corte_caja_pdf"
+    file="corte_caja.report_corte_caja_pdf"
+    />
+</odoo>

@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_corte_caja,access_corte_caja,model_corte_caja,base.group_user,1,1,1,1
+access_corte_caja_detalle,access_corte_caja_detalle,model_corte_caja_detalle,base.group_user,1,1,1,1
+access_corte_caja_resumen,access_corte_caja_resumen,model_corte_caja_resumen,base.group_user,1,1,1,1
+access_corte_caja_factura,access_corte_caja_factura,model_corte_caja_factura,base.group_user,1,1,1,1

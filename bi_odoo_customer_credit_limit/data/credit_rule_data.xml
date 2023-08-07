@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+      <record forcecreate="True" id="limite_credito_monto_fecha_vencimiento_1" model="customer.credit.limit">
+          <field name="name">Limite de credito por monto y fecha de vencimiento</field>
+          <field name="code">LCMFV</field>
+          <field name="credit_limit_cust">1200</field>
+          <field name="credit_limit_formula">two_rule</field>
+          <field name="days">5</field>
+      </record>
+<!--
+        <record forcecreate="True" id="res_partner_credit_limit_id_id" model="ir.property">
+            <field name="name">res_partner_credit_limit_id_id</field>
+            <field name="fields_id" search="[('model','=','res.partner'),('name','=','credit_limit_id')]"/>
+            <field eval="'customer.credit.limit,'+str(ref('limite_credito_monto_fecha_vencimiento_1'))" model="customer.credit.limit" name="value"/>
+            <field name="company_id" ref="base.main_company"/>
+        </record>
+-->
+    </data>
+</odoo>

@@ -1,0 +1,221 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* bi_odoo_customer_credit_limit
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0+e-20200629\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-02 16:43+0000\n"
+"PO-Revision-Date: 2020-11-02 16:43+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: bi_odoo_customer_credit_limit
+#: model:ir.actions.act_window,name:bi_odoo_customer_credit_limit.action_credit_limit_tree
+msgid "=action.credit.limit.view"
+msgstr ""
+
+#. module: bi_odoo_customer_credit_limit
+#: model:ir.model.fields.selection,name:bi_odoo_customer_credit_limit.selection__customer_credit_limit__credit_limit_formula__two_rule
+msgid "Both Rules"
+msgstr "Ambas Reglas"
+
+#. module: bi_odoo_customer_credit_limit
+#: model_terms:ir.actions.act_window,help:bi_odoo_customer_credit_limit.open_credit_limit_list
+msgid "Click to add a new Credit Limit Rule."
+msgstr ""
+
+#. module: bi_odoo_customer_credit_limit
+#: model:ir.model.fields,field_description:bi_odoo_customer_credit_limit.field_customer_credit_limit__code
+msgid "Code"
+msgstr "Código"
+
+#. module: bi_odoo_customer_credit_limit
+#: model:ir.model.fields.selection,name:bi_odoo_customer_credit_limit.selection__customer_product__type_id__consu
+msgid "Consumable"
+msgstr "Consumible"
+
+#. module: bi_odoo_customer_credit_limit
+#: model:ir.model,name:bi_odoo_customer_credit_limit.model_res_partner
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: bi_odoo_customer_credit_limit
+#: model:ir.model.fields,field_description:bi_odoo_customer_credit_limit.field_customer_product__standard_price
+#: model_terms:ir.ui.view,arch_db:bi_odoo_customer_credit_limit.view_customer_credit_limit_form
+msgid "Cost Price"
+msgstr ""
+
+#. module: bi_odoo_customer_credit_limit
+#: model:ir.model.fields,field_description:bi_odoo_customer_credit_limit.field_customer_credit_limit__create_uid
+#: model:ir.model.fields,field_description:bi_odoo_customer_credit_limit.field_customer_product__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: bi_odoo_customer_credit_limit
+#: model:ir.model.fields,field_description:bi_odoo_customer_credit_limit.field_customer_credit_limit__create_date
+#: model:ir.model.fields,field_description:bi_odoo_customer_credit_limit.field_customer_product__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: bi_odoo_customer_credit_limit
+#: model_terms:ir.ui.view,arch_db:bi_odoo_customer_credit_limit.view_customer_credit_limit_form
+msgid "Credirt Limit Rules"
+msgstr ""
+
+#. module: bi_odoo_customer_credit_limit
+#: model:ir.model.fields,field_description:bi_odoo_customer_credit_limit.field_customer_credit_limit__credit_limit_cust
+#: model:ir.model.fields,field_description:bi_odoo_customer_credit_limit.field_res_partner__credit_limit
+#: model:ir.model.fields,field_description:bi_odoo_customer_credit_limit.field_res_users__credit_limit
+msgid "Credit Limit"
+msgstr "Crédito límite"
+
+#. module: bi_odoo_customer_credit_limit
+#: model:ir.model.fields,field_description:bi_odoo_customer_credit_limit.field_customer_credit_limit__credit_limit_formula
+#: model:ir.model.fields,field_description:bi_odoo_customer_credit_limit.field_customer_product__type_id
+msgid "Credit Limit Formula"
+msgstr ""
+
+#. module: bi_odoo_customer_credit_limit
+#: model:ir.model.fields,field_description:bi_odoo_customer_credit_limit.field_res_partner__credit_limit_id
+#: model:ir.model.fields,field_description:bi_odoo_customer_credit_limit.field_res_users__credit_limit_id
+msgid "Credit Limit Rule"
+msgstr "Regla Limite de Credito"
+
+#. module: bi_odoo_customer_credit_limit
+#: model:ir.actions.act_window,name:bi_odoo_customer_credit_limit.open_credit_limit_list
+#: model:ir.ui.menu,name:bi_odoo_customer_credit_limit.menu_credirt_limit_rule
+msgid "Credit Limit Rules"
+msgstr "Regla Limite de Credito"
+
+#. module: bi_odoo_customer_credit_limit
+#: model:ir.model.fields,field_description:bi_odoo_customer_credit_limit.field_customer_product__customer_credit_pro_id
+msgid "Customer Credit Id"
+msgstr ""
+
+#. module: bi_odoo_customer_credit_limit
+#: model:ir.model.fields,field_description:bi_odoo_customer_credit_limit.field_customer_credit_limit__display_name
+#: model:ir.model.fields,field_description:bi_odoo_customer_credit_limit.field_customer_product__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: bi_odoo_customer_credit_limit
+#: model:ir.model.fields.selection,name:bi_odoo_customer_credit_limit.selection__customer_credit_limit__credit_limit_formula__due_date_rule
+msgid "Due Amount Till Days"
+msgstr "Por fecha de Vencimiento"
+
+#. module: bi_odoo_customer_credit_limit
+#: model:ir.model.fields,field_description:bi_odoo_customer_credit_limit.field_customer_credit_limit__id
+#: model:ir.model.fields,field_description:bi_odoo_customer_credit_limit.field_customer_product__id
+msgid "ID"
+msgstr ""
+
+#. module: bi_odoo_customer_credit_limit
+#: model_terms:ir.ui.view,arch_db:bi_odoo_customer_credit_limit.view_customer_credit_limit_form
+msgid "Internal Product Category"
+msgstr ""
+
+#. module: bi_odoo_customer_credit_limit
+#: model:ir.model.fields,field_description:bi_odoo_customer_credit_limit.field_customer_product__default_code
+#: model_terms:ir.ui.view,arch_db:bi_odoo_customer_credit_limit.view_customer_credit_limit_form
+msgid "Internal Reference"
+msgstr "Referencia interna"
+
+#. module: bi_odoo_customer_credit_limit
+#: model:ir.model.fields,field_description:bi_odoo_customer_credit_limit.field_customer_credit_limit____last_update
+#: model:ir.model.fields,field_description:bi_odoo_customer_credit_limit.field_customer_product____last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: bi_odoo_customer_credit_limit
+#: model:ir.model.fields,field_description:bi_odoo_customer_credit_limit.field_customer_credit_limit__write_uid
+#: model:ir.model.fields,field_description:bi_odoo_customer_credit_limit.field_customer_product__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: bi_odoo_customer_credit_limit
+#: model:ir.model.fields,field_description:bi_odoo_customer_credit_limit.field_customer_credit_limit__write_date
+#: model:ir.model.fields,field_description:bi_odoo_customer_credit_limit.field_customer_product__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: bi_odoo_customer_credit_limit
+#: model:ir.model,name:bi_odoo_customer_credit_limit.model_customer_product
+msgid "Limite de credito de los productos"
+msgstr ""
+
+#. module: bi_odoo_customer_credit_limit
+#: model:ir.model,name:bi_odoo_customer_credit_limit.model_customer_credit_limit
+msgid "Limite de credito del cliente"
+msgstr ""
+
+#. module: bi_odoo_customer_credit_limit
+#: model:ir.model.fields,field_description:bi_odoo_customer_credit_limit.field_customer_credit_limit__name
+#: model_terms:ir.ui.view,arch_db:bi_odoo_customer_credit_limit.view_customer_credit_limit_form
+msgid "Name"
+msgstr "Nombre"
+
+#. module: bi_odoo_customer_credit_limit
+#: model:ir.model.fields,field_description:bi_odoo_customer_credit_limit.field_customer_credit_limit__product_ids
+#: model:ir.model.fields,field_description:bi_odoo_customer_credit_limit.field_customer_product__product_id
+#: model_terms:ir.ui.view,arch_db:bi_odoo_customer_credit_limit.view_customer_credit_limit_form
+msgid "Product"
+msgstr "Producto"
+
+#. module: bi_odoo_customer_credit_limit
+#: model:ir.model.fields,field_description:bi_odoo_customer_credit_limit.field_customer_credit_limit__product_category_ids
+#: model:ir.model.fields,field_description:bi_odoo_customer_credit_limit.field_customer_product__categ_id
+#: model_terms:ir.ui.view,arch_db:bi_odoo_customer_credit_limit.view_customer_credit_limit_form
+msgid "Product Category"
+msgstr "Categoría de producto"
+
+#. module: bi_odoo_customer_credit_limit
+#: model_terms:ir.ui.view,arch_db:bi_odoo_customer_credit_limit.view_customer_credit_limit_form
+msgid "Product Type"
+msgstr "Tipo de producto"
+
+#. module: bi_odoo_customer_credit_limit
+#: model:ir.model.fields.selection,name:bi_odoo_customer_credit_limit.selection__customer_credit_limit__credit_limit_formula__receive_rule
+msgid "Receivable Amount of Customer"
+msgstr "Por monto del cliente"
+
+#. module: bi_odoo_customer_credit_limit
+#: model:ir.model.fields,field_description:bi_odoo_customer_credit_limit.field_customer_product__list_price
+msgid "Sale Price"
+msgstr "Precio de venta"
+
+#. module: bi_odoo_customer_credit_limit
+#: model:ir.model,name:bi_odoo_customer_credit_limit.model_sale_order
+msgid "Sales Order"
+msgstr "Pedido de venta"
+
+#. module: bi_odoo_customer_credit_limit
+#: model_terms:ir.ui.view,arch_db:bi_odoo_customer_credit_limit.view_customer_credit_limit_form
+msgid "Sales Price"
+msgstr "Precio de venta"
+
+#. module: bi_odoo_customer_credit_limit
+#: model:ir.model.fields.selection,name:bi_odoo_customer_credit_limit.selection__customer_product__type_id__service
+msgid "Service"
+msgstr "Servicio"
+
+#. module: bi_odoo_customer_credit_limit
+#: model:ir.model.fields.selection,name:bi_odoo_customer_credit_limit.selection__customer_product__type_id__product
+msgid "Storable Product"
+msgstr "Almacenable"
+
+#. module: bi_odoo_customer_credit_limit
+#: model:ir.model.fields,field_description:bi_odoo_customer_credit_limit.field_customer_product__uom_id
+#: model_terms:ir.ui.view,arch_db:bi_odoo_customer_credit_limit.view_customer_credit_limit_form
+msgid "Unit of Measure"
+msgstr "Unidad de medida"
+
+#. module: bi_odoo_customer_credit_limit
+#: model:ir.model.fields,field_description:bi_odoo_customer_credit_limit.field_customer_credit_limit__days
+msgid "days"
+msgstr "días"

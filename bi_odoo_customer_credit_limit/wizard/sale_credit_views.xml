@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_sale_credit_wizard" model="ir.ui.view">
+        <field name="name">sale.credit.wizard.view.form</field>
+        <field name="model">sale.credit.wizard</field>
+        <field name="arch" type="xml">
+            <form string="¿Autorizacion de credito?">
+                <group>
+                    <p>
+                        ¿Esta seguro de autorizar el siguiente credito?
+                    </p>
+                    <p>
+                        <field name="sale_credit_message"/>
+                    </p>
+                </group>
+                <footer>
+                    <button name="validate_credit" string="Confirmar" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

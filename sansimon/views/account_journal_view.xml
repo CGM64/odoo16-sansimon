@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record model="ir.ui.view" id="view_account_journal_form">
+      <field name="name">sansimon.account.journal.form</field>
+      <field name="model">account.journal</field>
+      <field name="inherit_id" ref="account.view_account_journal_form"/>
+      <field name="arch" type="xml">
+        <data>
+          <field name="invoice_reference_model" position="after">
+            <field name="template_print"/>
+          </field>
+        </data>
+      </field>
+    </record>
+
+
+    <record id="view_crm_team_form_inherit" model="ir.ui.view">
+      <field name="name">crm.team.form</field>
+      <field name="model">crm.team</field>
+      <field name="inherit_id" ref="sales_team.crm_team_view_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='invoiced_target']" position="after">
+          <label for="porcentaje_maximo"/>
+          <div>
+            <field name="porcentaje_maximo" class="oe_inline"/>%%
+          </div>
+          <label for="porcentaje_maximo_lider"/>
+          <div>
+            <field string="Porcentaje Max. lider" name="porcentaje_maximo_lider" class="oe_inline"/>%%
+          </div>
+        </xpath>
+      </field>
+    </record>
+  </data>
+</odoo>

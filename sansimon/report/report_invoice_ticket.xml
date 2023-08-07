@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <!-- Plantilla de la factura -->
+
+    <template id="report_invoice_document_ticket">
+      <t t-call="sansimon.external_layout_simple_page">
+        <t t-set="doc" t-value="doc.with_context(lang=doc.partner_id.lang)"/>
+        <div class="page">
+          <link rel="stylesheet" href="/sansimon/static/src/css/report.css" />
+          <div class="oe_structure"/>
+          <div class="container text-black">
+            <div class="row">
+              <div class="col-12 text-center">
+                <br/>
+                <t t-foreach="doc.journal_id.fel_frases_ids" t-as="frases">
+                  <span>
+                    <strong><span t-field="frases.fel_escenario.texto"/></strong>
+                  </span><br/>
+                </t>
+                <br/>
+                <span>
+                  <strong>Documento Tributario Electrónico</strong>
+                </span><br/>
+                <span>
+                  <strong><span t-field="doc.journal_id.tipo_documento"/></strong>
+                </span><br/>
+                <span>
+                  <strong>Electronica</strong>
+                </span><br/>
+                <span>AUTORIZACION No.</span><br/>
+                <span>
+                  <strong><span t-field="doc.fel_firma"/></strong>
+                </span><br/>
+                <br/>
+                <span>SERIE
+                  <strong><span t-field="doc.fac_serie"/></strong>
+                </span><br/>
+                <span>Número de DTE
+                  <strong><span t-field="doc.fac_numero"/></strong>
+                </span><br/>
+                <br/>
+                <span>Certificacion:
+                  <strong><span t-field="doc.fecha_certificacion"/></strong>
+                </span><br/>
+                <span>Emisión:
+                  <strong><span t-field="doc.invoice_date"/></strong>
+                </span><br/>
+                <span>Vendedor:
+                  <strong><span t-field="doc.invoice_user_id.name"/></strong>
+                </span><br/>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 text-center">
+                    <img t-if="doc.generate_qr()" t-att-src="'data:image/png;base64,%s' % to_text(doc.generate_qr())" class="qr" />
+              </div>
+            </div>
+            <t t-if="doc.state == 'cancel'">
+              <div class="text-center">
+                <p style="font-size:30px; color:red;">CANCELADA</p>
+              </div>
+            </t>
+            <div class="row">
+              <div class="col-12 m-0 p-0">
+                <span>
+                  <strong>------------DATOS DEL COMPRADOR------------</strong>
+                </span><br/>
+                <span>NIT:
+                  <strong><span t-field="doc.partner_id.vat"/></strong>
+                </span><br/>
+                <span>Cliente:
+                  <strong><span t-field="doc.partner_id.name"/></strong>
+                </span><br/>
+                <span>Dirección:
+                  <strong><span t-field="doc.partner_id.display_street"/></strong>
+                </span><br/>
+                <span>------------------------------------------------------------</span><br/>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-2">CT</div>
+              <div class="col-6">PRODUCTO</div>
+              <div class="col-4 text-right">TOTAL</div>
+            </div>
+            <t t-set="current_subtotal" t-value="0"/>
+            <t t-set="current_descuento" t-value="0"/>
+            <t t-set="lines" t-value="doc.invoice_line_ids.sorted(key=lambda l: (-l.sequence, l.date, l.move_name, -l.id), reverse=True)"/>
+            <t t-foreach="lines" t-as="line">
+              <t t-set="current_subtotal" t-value="current_subtotal + (line.quantity * line.price_unit)"/>
+              <t t-set="current_descuento" t-value="current_descuento + ((line.quantity * line.price_unit) - line.price_total)"/>
+              <div class="row">
+                <div class="col-2 m-0 p-0"><span t-esc="'{0:,.2f}'.format(line.quantity)"/></div>
+                <div class="col-6 m-0 p-0"><span t-field="line.product_id.default_code"/></div>
+                <div class="col-4 m-0 p-0 text-right">Q <span t-esc="'{0:,.2f}'.format(line.quantity * line.price_unit)"/></div>
+              </div>
+              <div class="row">
+                <div class="col m-0 p-0">
+                  <small><span t-field="line.name" t-options="{'widget': 'text'}"/></small>
+                </div>
+              </div>
+            </t>
+            <div class="row  justify-content-end">
+              <div class="col-2 m-0 p-0 text-right">SUB.</div>
+              <div class="col-4 m-0 p-0 text-right"><span t-esc="current_subtotal" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/></div>
+            </div>
+            <div class="row  justify-content-end">
+              <div class="col-2 m-0 p-0 text-right">DESC.</div>
+              <div class="col-4 m-0 p-0 text-right"><span t-esc="current_descuento" t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/></div>
+            </div>
+            <div class="row  justify-content-end">
+              <div class="col-2 m-0 p-0 text-right">
+                <strong>TOTAL</strong>
+              </div>
+              <div class="col-4 m-0 p-0 text-right">
+                <strong><span t-field="doc.amount_total"/></strong>
+              </div>
+            </div>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <div class="row text-center">
+              <div class="col m-0 p-0">
+                <span>Documento Interno:
+                  <strong><span t-field="doc.name"/></strong>
+                </span><br/>
+                <span>
+                  <strong>DATOS CERTIFICADOR</strong>
+                </span><br/>
+                NIT: <span t-if="doc.fel_setting_id" t-field="doc.fel_setting_id.proveedor_id.vat"/><br/>
+                <span t-if="doc.fel_setting_id" t-field="doc.fel_setting_id.proveedor_id.name"/><br/>
+                <span t-if="doc.fel_setting_id" t-field="doc.fel_setting_id.proveedor_id.website"/><br/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </t>
+    </template>
+
+    <template id="report_invoice_ticket">
+      <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="doc">
+          <t t-set="lang" t-value="doc.invoice_user_id.sudo().lang if doc.type in ('in_invoice', 'in_refund') else doc.partner_id.lang"/>
+          <t t-call="sansimon.report_invoice_document_ticket" t-lang="lang"/>
+        </t>
+      </t>
+    </template>
+
+    <template id="external_layout_simple_page">
+      <t t-if="not o" t-set="o" t-value="doc"/>
+
+      <t t-if="not company">
+        <!-- Multicompany -->
+        <t t-if="company_id">
+          <t t-set="company" t-value="company_id"/>
+        </t>
+        <t t-elif="o and 'company_id' in o">
+          <t t-set="company" t-value="o.company_id.sudo()"/>
+        </t>
+        <t t-else="else">
+          <t t-set="company" t-value="res_company"/>
+        </t>
+      </t>
+
+      <t t-call="sansimon.external_layout_ticket"><t t-raw="0"/></t>
+
+    </template>
+
+    <template id="external_layout_ticket">
+      <div t-attf-class="header o_company_#{company.id}_layout" t-att-style="report_header_style">
+        <div class="o_boxed_header text-black">
+          <div class="row">
+            <div class="col-12 text-center">
+              <strong><span class="mt0" t-field="company.company_registry"/></strong><br/>
+              <strong><span class="mt0" t-field="o.journal_id.fel_setting_id.emisor.name"/></strong><br/>
+              <span class="mt0" t-field="o.journal_id.fel_setting_id.emisor.street"/><br/>
+              <span class="mt0">Teléfono:
+              </span><span class="mt0" t-field="company.phone"/><br/>
+              <span class="mt0">Nit:
+              </span><span t-field="company.vat"/><br/>
+              <span class="mt0" t-field="company.display_website"/><br/>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div t-attf-class="article o_report_layout_boxed o_company_#{company.id}_layout article" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
+        <t t-call="web.address_layout"/>
+        <t t-raw="0"/>
+      </div>
+    </template>
+
+  </data>
+</odoo>

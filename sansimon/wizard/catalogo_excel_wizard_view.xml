@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_import_catalogos_excel_wizard" model="ir.ui.view">
+        <field name="name">comelasa.importar.catalogos.excel.wizard</field>
+        <field name="model">comelasa.importar.catalogos.excel.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Cargar Catalogos de Excel">
+                <div>
+                    <p>
+                        Este asistente les ayudara a cargar todos los catalogos<br/>
+                        de una hoja de excel.
+                    </p>
+                </div>
+                <group>
+
+                  <field name="archivo" filename="name"/>
+                  <field name="tipo_plantilla"/>
+
+                </group>
+                <footer>
+                    <button string="Cargar Catalogos" name="cargar_catalogo_excel" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+         </field>
+    </record>
+
+    <record id="action_catalogos_excel_wizard" model="ir.actions.act_window">
+        <field name="name">Carga automatica de catalogos</field>
+        <field name="res_model">comelasa.importar.catalogos.excel.wizard</field>
+
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_import_catalogos_excel_wizard"/>
+        <field name="target">new</field>
+        <field name="context"></field>
+    </record>
+
+    <menuitem name="Carga Catalogos de Excel" action="action_catalogos_excel_wizard"
+        id="menu_catalogos_excel_wizard"
+        parent="stock.menu_product_in_config_stock"/>
+
+</odoo>

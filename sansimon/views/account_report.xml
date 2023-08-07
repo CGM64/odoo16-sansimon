@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- QWeb Reports Factura tipo papel normal-->
+        <report
+            id="account_invoices"
+            model="account.move"
+            string="Factura de Sansimon"
+            report_type="qweb-pdf"
+            name="sansimon.report_invoice_with_payments"
+            file="sansimon.report_invoice_with_payments"
+            attachment="(object.state == 'posted') and ((object.name or 'INV').replace('/','_')+'.pdf')"
+            print_report_name="(object._get_report_base_filename())"
+            groups="account.group_account_invoice"
+        />
+        <!-- QWeb Reports Factura tipo ticket-->
+        <record id="paper_invoice_pos" model="report.paperformat">
+              <field name="name">PaperFormat Invoice POS</field>
+              <field name="default" eval="True"/>
+              <field name="format">custom</field>
+              <field name="page_height">297</field>
+              <field name="page_width">80</field>
+              <field name="orientation">Portrait</field>
+              <field name="margin_top">36</field>
+              <field name="margin_bottom">2</field>
+              <field name="margin_left">2</field>
+              <field name="margin_right">2</field>
+              <field name="header_line" eval="False"/>
+              <field name="header_spacing">32</field>
+              <field name="dpi">90</field>
+         </record>
+
+        <report
+            id="account_invoices_ticket"
+            model="account.move"
+            string="Factura Ticket"
+            report_type="qweb-pdf"
+            name="sansimon.report_invoice_ticket"
+            file="sansimon.report_invoice_ticket"
+            attachment="(object.state == 'posted') and ((object.name or 'INV').replace('/','_')+'.pdf')"
+            print_report_name="(object._get_report_base_filename())"
+            groups="account.group_account_invoice"
+            paperformat="paper_invoice_pos"
+        />
+      </data>
+  </odoo>

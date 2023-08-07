@@ -1,0 +1,31 @@
+.page_class {
+  margin-top: -5cm !important;
+}
+
+.factura_logo {
+  max-height: 75px;
+}
+
+table {
+font-size: 12px;
+}
+
+.qr {
+  max-height: 120px;
+}
+.qr_fac {
+  max-height: 85px;
+  padding-top: 2%;
+}
+.no_pagina {
+  font-size: 14px;
+  padding-top: 0%;
+}
+
+.container {
+  background-color: transparent !important;
+}
+
+.header_container {
+  position:relative !important
+}

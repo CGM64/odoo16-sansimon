@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <report
+      id="report_stock_move_periodo_report_xls"
+      model="report.sansimon.stock_move_periodo_report_xls"
+      string="Informe de Inventario por Periodo"
+      report_type="xlsx"
+      name="sansimon.stock_move_periodo_report_xls"
+      file="InformePeriodo"
+      attachment_use="False"/>
+
+    <record id="stock_move_periodo_wizard_view" model="ir.ui.view">
+      <field name="name">Reporte de Inventario por Periodo</field>
+      <field name="model">sansimon.stock.move.periodo</field>
+      <field name="arch" type="xml">
+        <form string="Report Options">
+          <group>
+            <group>
+              <field name="fecha_inicio"/>
+              <field name="fecha_fin"/>
+            </group>
+            <group>
+              <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/>
+            </group>
+          </group>
+          <footer>
+            <button name="export_xls" type="object" default_focus="1" string="Export Excel" class="oe_highlight" context="{'xls_export':1}" icon="fa-download"/>
+            <button string="Cancel" class="btn btn-secondary" special="cancel"/>
+          </footer>
+        </form>
+      </field>
+    </record>
+
+    <record id="action_stock_move_periodo_wizard" model="ir.actions.act_window">
+      <field name="name">Informe por Periodo</field>
+      <field name="res_model">sansimon.stock.move.periodo</field>
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="stock_move_periodo_wizard_view"/>
+      <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_stock_move_periodo_wizard" name="Informe por Periodo" action="action_stock_move_periodo_wizard" parent="stock.menu_warehouse_report"/>
+  </data>
+</odoo>

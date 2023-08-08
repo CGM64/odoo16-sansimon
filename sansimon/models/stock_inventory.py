@@ -13,7 +13,7 @@ SUCURSAL = 901
 UBICACION_PADRE = 7
 
 class Inventory(models.Model):
-    _inherit = 'stock.inventory'
+    _name = 'inventory.intelisis.mixin'
 
     def getInventoryIntelisis(self):
         query = "spInvval"

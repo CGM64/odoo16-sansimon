@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="trasladar_db.list">
+      <field name="name">trasladar_db list</field>
+      <field name="model">trasladar_db.trasladar_db</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="trasladar_db.action_window">
+      <field name="name">trasladar_db window</field>
+      <field name="res_model">trasladar_db.trasladar_db</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="trasladar_db.action_server">
+      <field name="name">trasladar_db server</field>
+      <field name="model_id" ref="model_trasladar_db_trasladar_db"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="trasladar_db" id="trasladar_db.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="trasladar_db.menu_1" parent="trasladar_db.menu_root"/>
+    <menuitem name="Menu 2" id="trasladar_db.menu_2" parent="trasladar_db.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="trasladar_db.menu_1_list" parent="trasladar_db.menu_1"
+              action="trasladar_db.action_window"/>
+    <menuitem name="Server to list" id="trasladar_db" parent="trasladar_db.menu_2"
+              action="trasladar_db.action_server"/>
+-->
+  </data>
+</odoo>

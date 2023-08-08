@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+
+    <record id="fel_setting_tree" model="ir.ui.view">
+        <field name="name">fel.setting.tree</field>
+        <field name="model">fel.setting</field>
+        <field name="arch" type="xml">
+            <tree string="Ajustes">
+              <field name="name"/>
+              <field name="proveedor_id"/>
+              <field name="usuario"/>
+              <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_fel_setting_form">
+      <field name="name">Ajustes</field>
+      <field name="res_model">fel.setting</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_fel_tipo_frases_form">
+      <field name="name">Tipo de Frases</field>
+      <field name="res_model">fel.tipofrases</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_fel_escenario_form">
+      <field name="name">Escenario</field>
+      <field name="res_model">fel.escenario</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem parent="account.account_account_menu" id="menu_configuracion_fel" groups="account.group_account_user" name="Configuraicon FEL" sequence="200"/>
+    <menuitem action="action_fel_setting_form" id="menu_action_fel_setting_form" parent="menu_configuracion_fel" groups="account.group_account_user" sequence="200"/>
+    <menuitem action="action_fel_tipo_frases_form" id="menu_action_fel_tipo_frases_form" parent="menu_configuracion_fel" groups="account.group_account_user" sequence="201"/>
+    <menuitem action="action_fel_escenario_form" id="menu_action_fel_escenario_form" parent="menu_configuracion_fel" groups="account.group_account_user" sequence="202"/>
+  </data>
+</odoo>

@@ -1,0 +1,358 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* fel
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0+e-20200629\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-13 17:21+0000\n"
+"PO-Revision-Date: 2020-11-13 17:21+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: fel
+#: model_terms:ir.ui.view,arch_db:fel.view_fel_account_invoice_wizard
+msgid ""
+"<span class=\"o_form_label\">Todos los diarios seleccionados se "
+"firmaran.</span>"
+msgstr ""
+
+#. module: fel
+#: model:ir.model.fields,field_description:fel.field_fel_setting__active
+msgid "Active"
+msgstr "Activo"
+
+#. module: fel
+#: model:ir.actions.act_window,name:fel.action_fel_setting_form
+#: model:ir.ui.menu,name:fel.menu_action_fel_setting_form
+#: model_terms:ir.ui.view,arch_db:fel.fel_setting_tree
+msgid "Ajustes"
+msgstr ""
+
+#. module: fel
+#: model:ir.model.fields,field_description:fel.field_fel_setting__attach_xml
+msgid "Attach XML"
+msgstr ""
+
+#. module: fel
+#: model_terms:ir.ui.view,arch_db:fel.view_fel_account_move_form
+msgid "CANCELAR FIRMA"
+msgstr ""
+
+#. module: fel
+#: model:ir.model.fields,field_description:fel.field_res_partner__cui
+#: model:ir.model.fields,field_description:fel.field_res_users__cui
+msgid "CUI"
+msgstr ""
+
+#. module: fel
+#: model_terms:ir.ui.view,arch_db:fel.view_fel_account_invoice_wizard
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: fel
+#: model:ir.model.fields,field_description:fel.field_fel_setting__clave
+msgid "Clave"
+msgstr ""
+
+#. module: fel
+#: model:ir.model.fields,field_description:fel.field_fel_setting__cod_establecimiento
+msgid "Cod. Establecimiento"
+msgstr ""
+
+#. module: fel
+#: model:ir.model.fields,field_description:fel.field_fel_escenario__code
+#: model:ir.model.fields,field_description:fel.field_fel_proveedor__code
+#: model:ir.model.fields,field_description:fel.field_fel_tipofrases__code
+msgid "Codigo"
+msgstr ""
+
+#. module: fel
+#: model:ir.model.fields,field_description:fel.field_fel_setting__company_id
+msgid "Company"
+msgstr "Compañía"
+
+#. module: fel
+#: model_terms:ir.ui.view,arch_db:fel.view_fel_account_journal_form
+msgid "Configuracion FEL"
+msgstr ""
+
+#. module: fel
+#: model:ir.model,name:fel.model_fel_setting
+msgid "Configuración FEL"
+msgstr ""
+
+#. module: fel
+#: model:ir.ui.menu,name:fel.menu_configuracion_fel
+msgid "Configuraicon FEL"
+msgstr ""
+
+#. module: fel
+#: model:ir.model,name:fel.model_account_move_confirm_fel
+msgid "Confirm the selected invoices in FEL"
+msgstr ""
+
+#. module: fel
+#: model:ir.model,name:fel.model_res_partner
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: fel
+#: model:ir.model.fields,field_description:fel.field_account_journal_fel_frases__create_uid
+#: model:ir.model.fields,field_description:fel.field_account_move_confirm_fel__create_uid
+#: model:ir.model.fields,field_description:fel.field_fel_escenario__create_uid
+#: model:ir.model.fields,field_description:fel.field_fel_proveedor__create_uid
+#: model:ir.model.fields,field_description:fel.field_fel_setting__create_uid
+#: model:ir.model.fields,field_description:fel.field_fel_tipofrases__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: fel
+#: model:ir.model.fields,field_description:fel.field_account_journal_fel_frases__create_date
+#: model:ir.model.fields,field_description:fel.field_account_move_confirm_fel__create_date
+#: model:ir.model.fields,field_description:fel.field_fel_escenario__create_date
+#: model:ir.model.fields,field_description:fel.field_fel_proveedor__create_date
+#: model:ir.model.fields,field_description:fel.field_fel_setting__create_date
+#: model:ir.model.fields,field_description:fel.field_fel_tipofrases__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: fel
+#: model:ir.model.fields,field_description:fel.field_fel_setting__name
+msgid "Descripcion"
+msgstr ""
+
+#. module: fel
+#: model_terms:ir.ui.view,arch_db:fel.view_fel_account_journal_form
+msgid "Detalle"
+msgstr ""
+
+#. module: fel
+#: model:ir.model.fields,field_description:fel.field_account_journal_fel_frases__display_name
+#: model:ir.model.fields,field_description:fel.field_account_move_confirm_fel__display_name
+#: model:ir.model.fields,field_description:fel.field_fel_escenario__display_name
+#: model:ir.model.fields,field_description:fel.field_fel_proveedor__display_name
+#: model:ir.model.fields,field_description:fel.field_fel_setting__display_name
+#: model:ir.model.fields,field_description:fel.field_fel_tipofrases__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: fel
+#: model:ir.model.fields,field_description:fel.field_fel_setting__emisor
+msgid "Emisor"
+msgstr ""
+
+#. module: fel
+#: model:ir.actions.act_window,name:fel.action_fel_escenario_form
+#: model:ir.model.fields,field_description:fel.field_account_journal_fel_frases__fel_escenario
+#: model:ir.model.fields,field_description:fel.field_fel_escenario__name
+#: model:ir.ui.menu,name:fel.menu_action_fel_escenario_form
+msgid "Escenario"
+msgstr ""
+
+#. module: fel
+#: model:ir.model,name:fel.model_fel_escenario
+msgid "Escenarios"
+msgstr ""
+
+#. module: fel
+#: model_terms:ir.actions.act_window,help:fel.action_validate_fel_account_move
+msgid "Este wizard ayuda a firmar todos los documentos pendientes de firmar."
+msgstr ""
+
+#. module: fel
+#: model:ir.model.fields,field_description:fel.field_account_journal_fel_frases__account_journal_id
+msgid "FEL Frases"
+msgstr ""
+
+#. module: fel
+#: model:ir.model.fields,field_description:fel.field_account_journal__fel_setting_id
+#: model:ir.model.fields,field_description:fel.field_account_move__fel_setting_id
+msgid "Facturacion FEL"
+msgstr ""
+
+#. module: fel
+#: model:ir.model.fields,field_description:fel.field_account_move__fecha_certificacion
+msgid "Fecha certificacion"
+msgstr ""
+
+#. module: fel
+#: model:ir.model.fields,field_description:fel.field_account_move__fel_firma
+msgid "Firma FEL"
+msgstr ""
+
+#. module: fel
+#: model:ir.actions.act_window,name:fel.action_validate_fel_account_move
+msgid "Firmar Documentos FEL"
+msgstr ""
+
+#. module: fel
+#: model:ir.model.fields,field_description:fel.field_fel_tipofrases__name
+msgid "Frase"
+msgstr ""
+
+#. module: fel
+#: model:ir.model.fields,field_description:fel.field_account_journal_fel_frases__fel_tipofrase
+#: model_terms:ir.ui.view,arch_db:fel.view_fel_account_journal_form
+msgid "Frases"
+msgstr ""
+
+#. module: fel
+#: model:ir.model,name:fel.model_account_journal_fel_frases
+msgid "Frases FEL por diario"
+msgstr ""
+
+#. module: fel
+#: model:ir.model.fields,field_description:fel.field_account_journal_fel_frases__id
+#: model:ir.model.fields,field_description:fel.field_account_move_confirm_fel__id
+#: model:ir.model.fields,field_description:fel.field_fel_escenario__id
+#: model:ir.model.fields,field_description:fel.field_fel_proveedor__id
+#: model:ir.model.fields,field_description:fel.field_fel_setting__id
+#: model:ir.model.fields,field_description:fel.field_fel_tipofrases__id
+msgid "ID"
+msgstr ""
+
+#. module: fel
+#: model:ir.model,name:fel.model_account_journal
+msgid "Journal"
+msgstr "Diario"
+
+#. module: fel
+#: model:ir.model,name:fel.model_account_move
+msgid "Journal Entries"
+msgstr "Asientos contables"
+
+#. module: fel
+#: model:ir.model.fields,field_description:fel.field_account_journal_fel_frases____last_update
+#: model:ir.model.fields,field_description:fel.field_account_move_confirm_fel____last_update
+#: model:ir.model.fields,field_description:fel.field_fel_escenario____last_update
+#: model:ir.model.fields,field_description:fel.field_fel_proveedor____last_update
+#: model:ir.model.fields,field_description:fel.field_fel_setting____last_update
+#: model:ir.model.fields,field_description:fel.field_fel_tipofrases____last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: fel
+#: model:ir.model.fields,field_description:fel.field_account_journal_fel_frases__write_uid
+#: model:ir.model.fields,field_description:fel.field_account_move_confirm_fel__write_uid
+#: model:ir.model.fields,field_description:fel.field_fel_escenario__write_uid
+#: model:ir.model.fields,field_description:fel.field_fel_proveedor__write_uid
+#: model:ir.model.fields,field_description:fel.field_fel_setting__write_uid
+#: model:ir.model.fields,field_description:fel.field_fel_tipofrases__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: fel
+#: model:ir.model.fields,field_description:fel.field_account_journal_fel_frases__write_date
+#: model:ir.model.fields,field_description:fel.field_account_move_confirm_fel__write_date
+#: model:ir.model.fields,field_description:fel.field_fel_escenario__write_date
+#: model:ir.model.fields,field_description:fel.field_fel_proveedor__write_date
+#: model:ir.model.fields,field_description:fel.field_fel_setting__write_date
+#: model:ir.model.fields,field_description:fel.field_fel_tipofrases__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: fel
+#: model:ir.model.fields,field_description:fel.field_account_journal__fel_frases_ids
+msgid "Lineas de FEL Frases"
+msgstr ""
+
+#. module: fel
+#: model:ir.model.fields,field_description:fel.field_fel_proveedor__vat
+msgid "Nit"
+msgstr ""
+
+#. module: fel
+#: code:addons/fel/models/account_move.py:0
+#, python-format
+msgid "No puede utilizar este diario, solo se puede utilizar desde una venta."
+msgstr ""
+
+#. module: fel
+#: model:ir.model.fields,field_description:fel.field_fel_proveedor__name
+msgid "Nombre"
+msgstr ""
+
+#. module: fel
+#: model:ir.model.fields,field_description:fel.field_fel_setting__nombre_comercial
+msgid "Nombre Comercial"
+msgstr ""
+
+#. module: fel
+#: model_terms:ir.ui.view,arch_db:fel.view_fel_account_invoice_wizard
+msgid "Post Journal Entries"
+msgstr "Validar asientos"
+
+#. module: fel
+#: model:ir.model.fields,field_description:fel.field_fel_setting__proveedor_id
+msgid "Proveedor"
+msgstr ""
+
+#. module: fel
+#: model:ir.model,name:fel.model_fel_proveedor
+msgid "Proveedor de FEL"
+msgstr ""
+
+#. module: fel
+#: model_terms:ir.ui.view,arch_db:fel.view_fel_account_move_form
+msgid "Reset to Draft"
+msgstr "Cambiar a borrador"
+
+#. module: fel
+#: code:addons/fel/models/account_move.py:0
+#, python-format
+msgid ""
+"Something went wrong during your conexion\n"
+"``%s``"
+msgstr ""
+
+#. module: fel
+#: model:ir.model.fields,field_description:fel.field_fel_escenario__texto
+msgid "Texto"
+msgstr ""
+
+#. module: fel
+#: model:ir.model.fields,help:fel.field_fel_escenario__texto
+msgid "Texto a colocar en la representacion grafica"
+msgstr ""
+
+#. module: fel
+#: model_terms:ir.ui.view,arch_db:fel.view_fel_account_invoice_wizard
+msgid "Timbrar Facturas"
+msgstr ""
+
+#. module: fel
+#: model:ir.model.fields,field_description:fel.field_fel_escenario__tipofrases_id
+msgid "Tipo Frases"
+msgstr ""
+
+#. module: fel
+#: model:ir.actions.act_window,name:fel.action_fel_tipo_frases_form
+#: model:ir.ui.menu,name:fel.menu_action_fel_tipo_frases_form
+msgid "Tipo de Frases"
+msgstr ""
+
+#. module: fel
+#: model:ir.model,name:fel.model_fel_tipofrases
+msgid "Tipos de Frases"
+msgstr ""
+
+#. module: fel
+#: model:ir.model.fields,field_description:fel.field_fel_setting__token
+msgid "Token"
+msgstr ""
+
+#. module: fel
+#: model:ir.model.fields,field_description:fel.field_fel_setting__usuario
+msgid "Usuario"
+msgstr ""
+
+#. module: fel
+#: model_terms:ir.ui.view,arch_db:fel.view_fel_account_move_form
+msgid "¿Esta seguro de anular una firma electronica?"
+msgstr ""

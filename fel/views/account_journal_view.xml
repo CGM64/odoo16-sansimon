@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record model="ir.ui.view" id="view_fel_account_journal_form">
+        <field name="name">fel.account.journal.form</field>
+        <field name="model">account.journal</field>
+        <field name="inherit_id" ref="l10n_gt_sat.view_account_journal_form"/>
+        <field name="arch" type="xml">
+            <data>
+                <field name="invoice_receipt" position="after">
+                    <field name="fel_setting_id" attrs="{'invisible': [('type', 'not in', ['sale'])]}"/>
+                </field>
+                <page name="advanced_settings" position="after">
+                  <page name="fel_settings" string="Configuracion FEL">
+                      <group>
+                            <group string="Frases">
+                              <field name="fel_frases_ids" nolabel="1">
+                                <tree string="Detalle" editable="botton">
+                                  <field name="fel_tipofrase" options="{'no_create': True}"/>
+                                  <field name="fel_escenario" options="{'no_create': True}" domain="[('tipofrases_id', '=', fel_tipofrase)]"/>
+                                </tree>
+                              </field>
+                          </group>
+                      </group>
+                  </page>
+                </page>
+            </data>
+        </field>
+    </record>
+  </data>
+</odoo>

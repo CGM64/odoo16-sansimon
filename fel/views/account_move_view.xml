@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record model="ir.ui.view" id="view_fel_account_move_form">
+      <field name="name">account.move.form.fel</field>
+      <field name="model">account.move</field>
+      <field name="inherit_id" ref="account.view_move_form"/>
+      <field name="arch" type="xml">
+        <data>
+          <field name="fac_numero" position="after">
+            <field name="fel_firma" attrs="{'invisible': [('type', 'not in', ('out_invoice', 'out_refund', 'in_invoice', 'in_refund', 'out_receipt', 'in_receipt'))]}"/>
+
+          </field>
+          <field name="team_id" position="after">
+            <field name="fel_setting_id" options="{'no_create': True, 'no_open': True}" class="oe_inline"/>
+            <field name="fecha_certificacion" options="{'no_create': True, 'no_open': True}" class="oe_inline"/>
+            <field name="fel_factura_referencia_id" options="{'no_create': True}" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+            <field name="fel_motivo" attrs="{'readonly': [('state', '!=', 'draft')]}"/>            
+          </field>
+
+          <button name="button_draft" position="replace">
+            <button name="button_draft" string="Reset to Draft" type="object" groups="account.group_account_invoice"
+                                attrs="{'invisible' : ['|', '|', ('restrict_mode_hash_table', '=', True), ('state', 'not in', ('posted', 'cancel')), ('fel_firma','!=',False)]}"/>
+          <!-- Register Payment (only invoices / receipts) -->
+            <button name="button_draft_fel" id="account_invoice_draft_fel_btn"
+                    type="object" class="oe_highlight"
+                    attrs="{'invisible': ['|','|','|', ('state', '!=', 'posted'), ('invoice_payment_state', '!=', 'not_paid'), ('type', 'not in', ('out_invoice', 'out_refund', 'out_receipt')), ('fel_firma','=',False)]}"
+                    string="CANCELAR FIRMA"
+                    groups="account.group_account_invoice"
+                    confirm="¿Esta seguro de anular una firma electronica?"/>
+          </button>
+
+        </data>
+      </field>
+    </record>
+
+    <!-- Wizard para timbrar en batch -->
+
+    <!--Account Move lines-->
+    <record id="view_fel_account_invoice_wizard" model="ir.ui.view">
+        <field name="name">Fel Firmar Documentos</field>
+        <field name="model">account.move.confirm.fel</field>
+        <field name="arch" type="xml">
+            <form string="Post Journal Entries">
+                <span class="o_form_label">Todos los diarios seleccionados se firmaran.</span>
+                <footer>
+                  <button string="Timbrar Facturas" name="invoice_confirm_fel" type="object" default_focus="1" class="btn-primary"/>
+                  <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_validate_fel_account_move" model="ir.actions.act_window">
+        <field name="name">Firmar Documentos FEL</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">account.move.confirm.fel</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_fel_account_invoice_wizard"/>
+        <field name="context">{}</field>
+        <field name="target">new</field>
+        <field name="help">Este wizard ayuda a firmar todos los documentos pendientes de firmar.</field>
+        <field name="binding_model_id" ref="account.model_account_move" />
+        <field name="binding_view_types">list</field>
+    </record>
+
+  </data>
+</odoo>

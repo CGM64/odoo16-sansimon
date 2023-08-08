@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record model="ir.ui.view" id="view_sat_account_account_form">
+        <field name="name">sat.account.account.form</field>
+        <field name="model">account.account</field>
+        <field name="inherit_id" ref="account.view_account_form"/>
+        <field name="arch" type="xml">
+            <data>
+                <field name="group_id" position="after">
+                    <field name="referencia"/>
+                </field>
+            </data>
+        </field>
+    </record>
+  </data>
+</odoo>

@@ -1,0 +1,110 @@
+<odoo>
+  <data>
+
+    <template id="bri_home_page" inherit_id="website.homepage">
+      <xpath expr="//div[@id='wrap']" position="replace">
+        <div id="wrap" class="oe_structure oe_empty">
+          <div id="carouselB" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner bg-dark">
+              <div class="carousel-item active oe_custom_bg" data-interval="5000">
+                <div class="container container-item p-0 m-0" style="max-width:100% !important;">
+                  <img src="https://images.triumphmotorcycles.co.uk/media-library/images/motorcycles/modern-classics/2022%20special%20editions/rocket%203%20r%20221/model%20page/my22-rocket-221-hpr-1920x1080.jpg" class="d-block w-100 " alt="..." />
+                  <div class="carousel-content py-4 c-content-left w-75 text-break wow animate__animated animate__fadeInUp">
+                    <div class="s_title pb8">
+                      <h1 class="s_title_default text-h-responsive fadeIn">ROCKET 3 R 221 SPECIAL EDITION</h1>
+                    </div>
+                    <p class="lead text-p-responsive fadeIn">La edición especial rinde homenaje a sus insuperables
+                          prestaciones y
+                          par motor máximo de 221
+                          Newton metro.</p>
+                    <div class="s_btn pt16 pb16 fadeIn" data-name="Button">
+                      <a href="#" class="btn btn-danger text-btn-responsive btn-responsive">DESCUBRIR MÁS</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="carousel-item oe_custom_bg" data-interval="5000">
+                <div class="container container-item p-0 m-0" style="max-width:100% !important;">
+                  <img src="https://images.triumphmotorcycles.co.uk/media-library/images/motorcycles/adventure-touring/tiger-1200-tease-2021/beat%204/hpr-b4-triumph_tiger_1200-1920x1080%203.jpg" class="d-block w-100" alt="..." />
+                  <div class="carousel-content py-4 c-content-right w-75 text-break wow animate__animated animate__fadeInUp">
+                    <div class="s_title pb8">
+                      <h1 class="s_title_default text-h-responsive fadeIn">PURO DISEÑO CON UN ÚNICO PROPÓSITO</h1>
+                    </div>
+                    <p class="lead text-p-responsive fadeIn">Pruebas oficiales del prototipo de la nueva Tiger 1200.</p>
+                    <div class="s_btn pt16 pb16 fadeIn" data-name="Button">
+                      <a href="#" class="btn btn-danger text-btn-responsive btn-responsive">DESCUBRIR MÁS</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item oe_custom_bg" data-interval="5000">
+                <div class="container container-item p-0 m-0" style="max-width:100% !important;">
+                  <video preload="none" playsinline="true" muted="true" loop="loop" poster="https://images.triumphmotorcycles.co.uk/media-library/images/motorcycles/modern-classics/gold%20lines%20my22/special_edition_my22_t120_black_details_nh_0045.jpg" itemprop="video" itemscope="true" autoplay="true" itemtype="http://schema.org/VideoObject" class="d-block w-100 ">
+                    <source src="https://images.triumphmotorcycles.co.uk/media-library/files/central-marketing-team/videos/family%20videos/goldlinehpr.mp4" type="video/mp4" />
+                  </video>
+                  <div class="carousel-content py-4 c-content-left w-75 text-break wow animate__animated animate__fadeInUp">
+                    <div class="s_title pb8">
+                      <h1 class="s_title_default text-h-responsive fadeIn">BONNEVILLE GOLD LINE EDITION</h1>
+                    </div>
+                    <p class="lead text-p-responsive fadeIn">Un precioso iconos clásico con detalles pintados a mano...</p>
+                    <div class="s_btn pt16 pb16 fadeIn" data-name="Button">
+                      <a href="#" class="btn btn-danger text-btn-responsive btn-responsive">DESCUBRIR MÁS</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="loading loading-animated"></div>
+            <div class="carousel-control-prev" data-target="#carouselB" data-slide="prev" role="img" aria-label="Previous" title="Previous">
+              <span class="carousel-control-prev-icon" />
+              <span class="sr-only">Previous</span>
+            </div>
+            <div class="carousel-control-next" data-target="#carouselB" data-slide="next" role="img" aria-label="Next" title="Next">
+              <span class="carousel-control-next-icon" />
+              <span class="sr-only">Next</span>
+            </div>
+          </div>
+
+          <!-- ====================================== -->
+
+          <section class="s_three_columns pt32 pb32" data-name="Columns">
+            <div class="container">
+              <div class="row d-flex align-items-stretch">
+                <div class="col-lg-4 s_col_no_bgcolor pt16 pb16">
+                  <div class="card bg-white">
+                    <img class="card-img-top" src="/web/image/1486/Triumph_Post_PrecioBONNEBILLE%20T120.jpg" alt="Odoo - Prueba 1 a tres columnas" data-original-title="" title="" aria-describedby="tooltip29353" />
+                    <div class="card-body">
+                      <h3 class="card-title">Bonneville T120</h3>
+                      <p class="card-text">Inspira tus sentidos, con la nueva Boneville T120, conduce sobre carretera &amp;nbsp;y siente el placer de alimentar tu pasión. </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 s_col_no_bgcolor pt16 pb16">
+                  <div class="card bg-white">
+                    <img class="card-img-top" src="/web/image/1492/Triumph_Post_Precio3Tiger%201200%20Deser%20Edition.jpg" alt="Odoo - Prueba 2 a tres columnas" data-original-title="" title="" aria-describedby="tooltip178098" />
+                    <div class="card-body">
+                      <h3 class="card-title">Tiger 1200 Desert Edition</h3>
+                      <p class="card-text">Aventura se traduce en una palabra "TIGER" en su versión&amp;nbsp;1200 Desert Edition obtendrás todo lo necesario para tu Expedición.</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4 s_col_no_bgcolor pt16 pb16">
+                  <div class="card bg-white">
+                    <img class="card-img-top" src="/web/image/1487/Triumph_Post_PrecioSCAMBLER%201200%20XE.jpg" alt="Odoo - Prueba 3 a tres columnas" />
+                    <div class="card-body">
+                      <h3 class="card-title">Scrambler 1200 XE</h3>
+                      <p class="card-text">Campo o carretera, tu decides tu destino, Scrambler te motiva a cumplirlo, vive el placer de conducirla</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </xpath>
+    </template>
+
+  </data>
+</odoo>

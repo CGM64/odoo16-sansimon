@@ -1,0 +1,573 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+
+  <template id="report_arml_print_check_top_media">
+    <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="o">
+            <link href="/l10n_gt_sat/static/src/css/formato_papel.css" rel="stylesheet" />
+            <div t-att-data-oe-model="o._name" t-att-data-oe-id="o.id" t-foreach="o._check_get_pages()" t-as="page" class="page article ckus_page ckus_top_page" t-attf-style="top: {{ o.company_id.account_check_printing_margin_top }}in; left: {{ o.company_id.account_check_printing_margin_left }}in;">
+                <t t-call="{{o.journal_id.cheque_template}}"/>
+                <t t-call="{{o.journal_id.voucher_template}}"/>
+            </div>
+        </t>
+    </t>
+  </template>
+
+  <template id="report_arml_print_check_top_carta">
+    <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="o">
+            <link href="/l10n_gt_sat/static/src/css/formato_papel.css" rel="stylesheet" />
+            <div t-att-data-oe-model="o._name" t-att-data-oe-id="o.id" t-foreach="o._check_get_pages()" t-as="page" class="page article ckus_page ckus_top_page" t-attf-style="top: {{ o.company_id.account_check_printing_margin_top }}in; left: {{ o.company_id.account_check_printing_margin_left }}in;">
+                <t t-call="{{o.journal_id.cheque_template}}"/>
+                <t t-call="{{o.journal_id.voucher_template}}"/>
+            </div>
+        </t>
+    </t>
+  </template>
+
+  <template id="report_payment_receipt_check">
+    <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="o">
+            <link href="/l10n_gt_sat/static/src/css/formato_papel.css" rel="stylesheet" />
+            <div t-att-data-oe-model="o._name" t-att-data-oe-id="o.id" t-foreach="o._check_get_pages()" t-as="page" class="page article ckus_page ckus_top_page" t-attf-style="top: {{ o.company_id.account_check_printing_margin_top }}in; left: {{ o.company_id.account_check_printing_margin_left }}in;">
+                <t t-call="{{o.journal_id.cheque_template}}"/>
+            </div>
+        </t>
+    </t>
+  </template>
+
+  <template id="report_payment_receipt_check_voucher">
+    <t t-call="web.html_container">
+        <t t-foreach="docs" t-as="o">
+            <link href="/l10n_gt_sat/static/src/css/formato_papel.css" rel="stylesheet" />
+            <div t-att-data-oe-model="o._name" t-att-data-oe-id="o.id" t-foreach="o._check_get_pages()" t-as="page" class="page article ckus_page ckus_top_page" t-attf-style="top: {{ o.company_id.account_check_printing_margin_top }}in; left: {{ o.company_id.account_check_printing_margin_left }}in;">
+                <t t-call="{{o.journal_id.voucher_template}}"/>
+            </div>
+        </t>
+    </t>
+  </template>
+
+<!-- Formato para cheque BAM -->
+  <template id="ckgt_check_BAM">
+      <div>
+          <t t-if="page['state'] == 'cancelled'">
+              <div class="o-watermark">CANCELADO</div>
+          </t>
+          <table class="artml_table" style="width:100%;">
+            <tr style="height:40px;">
+              <td style="width:0%;"></td>
+              <td style="width:60%;"></td>
+              <td style="width:40%"></td>
+            </tr>
+            <tr style="height:30px;">
+              <td></td>
+              <td>
+                <![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]>Guatemala,
+  							<span t-field="o.payment_date" t-options='{"format":"dd"}'/>
+  							<span>&#160;</span>
+  							<span t-field="o.payment_date" t-options='{"format": "MMMM"}'/>
+  							<span>&#160;</span>
+  							<span t-field="o.payment_date" t-options='{"format": "yyyy"}'/>
+              </td>
+              <td class="text-left"><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]>
+                <![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]>
+                <![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]>
+                <span t-esc="page['amount'].replace(o.currency_id.symbol, '')"/></td>
+            </tr>
+            <tr style="height:30px;">
+              <td></td>
+              <td colspan="2"><span t-esc="page['partner_name']"/></td>
+            </tr>
+            <tr style="height:30px;">
+              <td></td>
+	      <td colspan="2"><small><span t-esc="o.check_fill_line()"/></small></td>
+            </tr>
+            <tr style="height:35px;">
+              <td></td>
+              <td colspan="2"><t t-if="o.check_no_negociable">NO NEGOCIABLE</t></td>
+            </tr>
+            <tr style="height:55px;">
+              <td colspan="3"><![CDATA[&nbsp;]]></td>
+            </tr>
+          </table>
+      </div>
+  </template>
+
+<!-- Formato para cheque BI -->
+  <template id="ckgt_check_BI">
+      <div>
+          <t t-if="page['state'] == 'cancelled'">
+              <div class="o-watermark">CANCELADO</div>
+          </t>
+          <table class="artml_table" style="width:100%;">
+            <tr style="height:35px;">
+              <td style="width:20%;">
+                <!-- <span t-if="page['sequence_number']" t-esc="page['sequence_number']" /> -->
+              </td>
+              <td style="width:60%;"></td>
+              <td style="width:20%"></td>
+            </tr>
+            <tr style="height:40px;">
+              <td colspan="3"><![CDATA[&nbsp;]]></td>
+            </tr>
+            <tr style="height:25px;">
+              <td></td>
+              <td>
+                Guatemala,
+  							<span t-field="o.payment_date" t-options='{"format":"dd"}'/>
+  							<span>&#160;</span>
+  							<span t-field="o.payment_date" t-options='{"format": "MMMM"}'/>
+  							<span>&#160;</span>
+  							<span t-field="o.payment_date" t-options='{"format": "yyyy"}'/>
+              </td>
+              <td class="text-right"><span t-esc="page['amount'].replace(o.currency_id.symbol, '')"/></td>
+            </tr>
+            <tr style="height:25px;">
+              <td></td>
+              <td colspan="2"><span t-esc="page['partner_name']"/></td>
+            </tr>
+            <tr style="height:25px;">
+              <td></td>
+              <td colspan="2"><span t-esc="o.check_fill_line()"/></td>
+            </tr>
+            <tr style="height:35px;">
+              <td></td>
+              <td colspan="2"><t t-if="o.check_no_negociable">NO NEGOCIABLE</t></td>
+            </tr>
+            <tr style="height:115px;">
+              <td colspan="3"><![CDATA[&nbsp;]]></td>
+            </tr>
+          </table>
+      </div>
+  </template>
+
+<!-- Formato para cheque GYT -->
+  <template id="ckgt_check_GYT">
+    <div>
+        <t t-if="page['state'] == 'cancelled'">
+            <div class="o-watermark">CANCELADO</div>
+        </t>
+        <table class="artml_table" style="width:100%;">
+          <tr style="height:35px;">
+            <td style="width:20%;">
+              <!-- <span t-if="page['sequence_number']" t-esc="page['sequence_number']" /> -->
+            </td>
+            <td style="width:60%;"></td>
+            <td style="width:20%"></td>
+          </tr>
+          <tr style="height:35px;">
+            <td colspan="3"><![CDATA[&nbsp;]]></td>
+          </tr>
+          <tr style="height:25px;">
+            <td></td>
+            <td>
+              Guatemala,
+              <span t-field="o.payment_date" t-options='{"format":"dd"}'/>
+              <span>&#160;</span>
+              <span t-field="o.payment_date" t-options='{"format": "MMMM"}'/>
+              <span>&#160;</span>
+              <span t-field="o.payment_date" t-options='{"format": "yyyy"}'/>
+            </td>
+            <td class="text-right"><span t-esc="page['amount'].replace(o.currency_id.symbol, '')"/></td>
+          </tr>
+          <tr style="height:25px;">
+            <td></td>
+            <td colspan="2"><span t-esc="page['partner_name']"/></td>
+          </tr>
+          <tr style="height:25px;">
+            <td></td>
+            <td colspan="2"><span t-esc="o.check_fill_line()"/></td>
+          </tr>
+          <tr style="height:35px;">
+            <td></td>
+            <td colspan="2"><t t-if="o.check_no_negociable">NO NEGOCIABLE</t></td>
+          </tr>
+          <tr style="height:45px;">
+            <td colspan="3"><![CDATA[&nbsp;]]></td>
+          </tr>
+        </table>
+    </div>
+  </template>
+
+<!-- Formato para cheque BAC -->
+  <template id="ckgt_check_BAC">
+    <div>
+        <t t-if="page['state'] == 'cancelled'">
+            <div class="o-watermark">CANCELADO</div>
+        </t>
+        <table class="artml_table" style="width:100%;">
+          <tr style="height:40px;">
+            <td style="width:0%;"></td>
+            <td style="width:60%;"></td>
+            <td style="width:40%"></td>
+          </tr>
+          <tr style="height:25px;">
+            <td></td>
+            <td>
+              <![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]>Guatemala,
+              <span t-field="o.payment_date" t-options='{"format":"dd"}'/>
+              <span>&#160;</span>
+              <span t-field="o.payment_date" t-options='{"format": "MMMM"}'/>
+              <span>&#160;</span>
+              <span t-field="o.payment_date" t-options='{"format": "yyyy"}'/>
+            </td>
+            <td class="text-left"><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]>
+              <![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]>
+              <![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]>
+              <![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]>
+              <span t-esc="page['amount'].replace(o.currency_id.symbol, '')"/></td>
+          </tr>
+          <tr style="height:25px;">
+            <td></td>
+            <td colspan="2">
+              <![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]>
+              <![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]><![CDATA[&nbsp;]]>
+                <span t-esc="page['partner_name']"/>
+              </td>
+          </tr>
+          <tr style="height:25px;">
+            <td></td>
+            <td colspan="2"><span t-esc="o.check_fill_line()"/></td>
+          </tr>
+          <tr style="height:20px;">
+            <td><![CDATA[&nbsp;]]></td>
+            <td colspan="2"><![CDATA[&nbsp;]]></td>
+          </tr>
+          <tr style="height:35px;">
+            <td></td>
+            <td colspan="2"><t t-if="o.check_no_negociable">NO NEGOCIABLE</t></td>
+          </tr>
+          <tr style="height:55px;">
+            <td colspan="3"><![CDATA[&nbsp;]]></td>
+          </tr>
+        </table>
+    </div>
+  </template>
+
+
+  <template id="voucher_1">
+      <div>
+          <t t-if="page['state'] == 'cancelled'">
+              <div class="o-watermark">CANCELADO</div>
+          </t>
+          <table class="artml_table" style="width:100%;">
+            <tr style="height:50px;">
+              <td style="width:15%;"><![CDATA[&nbsp;]]></td>
+              <td style="width:5%;"></td>
+              <td style="width:20%"></td>
+              <td style="width:20%"></td>
+              <td style="width:20%"></td>
+              <td style="width:20%"></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td colspan="4"><![CDATA[&nbsp;]]></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td colspan="4"><span t-esc="o.name"/></td>
+              <td></td>
+            </tr>
+            <t t-if="o.move_line_ids">
+              <tr t-foreach="o.move_line_ids" t-as="l">
+                <td><span t-field="l.account_id.code"/></td>
+                <td colspan="4"><span t-field="l.account_id.name"/></td>
+                <td class="text-right">
+                  <t t-if="l.debit">
+                    <span t-esc="'{0:,.2f}'.format(l.debit)"/>
+                  </t>
+                  <t t-else="else">
+                    <span t-esc="'{0:,.2f}'.format(l.credit)"/>
+                  </t>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td class="text-right" colspan="4">Total de la partida ==></td>
+                <td class="text-right"><span t-esc="'{0:,.2f}'.format(o.move_line_ids[0].move_id.amount_total)"/></td>
+              </tr>
+            </t>
+            <tr>
+              <td colspan="2"></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </table>
+          <div t-attf-class="footer">
+            <table class="artml_table" style="width:100%;">
+              <tr>
+                <td style="width:15%;"><p/></td>
+                <td style="width:5%;"></td>
+                <td style="width:20%"></td>
+                <td style="width:20%"></td>
+                <td style="width:20%"></td>
+                <td style="width:20%"></td>
+              </tr>
+              <tr>
+                <td colspan="2"><span t-esc="o.create_uid.name"/></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="text-right"><span class="m-0" t-esc="page['payment_date']"/></td>
+              </tr>
+            </table>
+
+          </div>
+      </div>
+  </template>
+
+  <template id="voucher_2">
+      <div>
+          <t t-if="page['state'] == 'cancelled'">
+              <div class="o-watermark">CANCELADO</div>
+          </t>
+          <table class="artml_table" style="width:100%;">
+            <tr style="height:50px;">
+              <td style="width:15%;"><![CDATA[&nbsp;]]></td>
+              <td style="width:59%"></td>
+              <td style="width:13%"></td>
+              <td style="width:13%"></td>
+            </tr>
+            <tr style="height:30px;">
+              <td></td>
+              <td colspan="4"><![CDATA[&nbsp;]]></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td colspan="4"><span t-esc="o.name"/></td>
+            </tr>
+            <tr>
+              <td colspan="4"><span t-esc="o.communication"/></td>
+            </tr>
+            <tr>
+              <td>Cuenta</td>
+              <td>Descripcion</td>
+              <td class="text-center">Debe</td>
+              <td class="text-center">Haber</td>
+            </tr>
+            <t t-if="o.move_line_ids">
+              <tr t-foreach="o.move_line_ids" t-as="l">
+                <td><span t-field="l.account_id.code"/></td>
+                <td><span t-field="l.account_id.name"/></td>
+                <td class="text-right"><span t-esc="'{0:,.2f}'.format(l.debit)"/></td>
+                <td class="text-right"><span t-esc="'{0:,.2f}'.format(l.credit)"/></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td class="text-right">Total de la partida ==></td>
+                <td class="text-right"><span t-esc="'{0:,.2f}'.format(o.move_line_ids[0].move_id.amount_total)"/></td>
+                <td class="text-right"><span t-esc="'{0:,.2f}'.format(o.move_line_ids[0].move_id.amount_total)"/></td>
+              </tr>
+            </t>
+          </table>
+          <div t-attf-class="footer">
+            <table class="artml_table" style="width:100%;">
+              <tr>
+                <td style="width:20%;"><span t-esc="o.create_uid.name"/></td>
+                <td style="width:20%;"></td>
+                <td style="width:20%;"></td>
+                <td style="width:20%;"></td>
+                <td style="width:20%;" class="text-right"><span class="m-0" t-esc="page['payment_date']"/></td>
+              </tr>
+            </table>
+          </div>
+      </div>
+  </template>
+
+  <template id="voucher_3">
+    <div>
+      <t t-if="page['state'] == 'cancelled'">
+        <div class="o-watermark">CANCELADO</div>
+      </t>
+      <style type="text/css">
+          .ch_voucher{
+            line-height: 1.5;
+            width=800px;
+            align:center;
+          }
+          .td_brit{
+            width: 114px;
+            font-size: 12px;
+          }
+          .td_brit_bottom{
+            width: 114px;
+            font-size: 12px;
+            border-bottom: 1px solid;
+          }
+          .td_brits{
+            width: 150px;
+            font-size: 12px;
+          }
+          .td_brita{
+            width: 114px;
+            font-size: 15px;
+          }
+          .text_center{
+            text-align:center;
+          }
+          .text_right{
+            text-align:right;
+          }
+      </style>
+      <table class="ch_voucher">
+        <tr t-foreach="range(5)" t-as="a">
+          <td class="td_brit">&#160;</td>
+          <td class="td_brit">&#160;</td>
+          <td class="td_brit">&#160;</td>
+          <td class="td_brit">&#160;</td>
+          <td class="td_brit">&#160;</td>
+          <td class="td_brit">&#160;</td>
+          <td class="td_brit">&#160;</td>
+        </tr>
+        <tr>
+          <td class="td_brit">&#160;</td>
+          <td class="td_brit">Cheque No:</td>
+          <td class="td_brit" colspan="2"><span t-field="o.check_number"/></td>
+          <td class="td_brit">&#160;</td>
+          <td class="td_brit">Moneda:</td>
+          <td class="td_brit">
+                <t t-if="o.currency_id.name == 'USD'">DOLARES</t>
+                <t t-if="o.currency_id.name == 'GTQ'">QUETZALES</t>
+                <t t-if="o.currency_id.name == 'EUR'">EUROS</t>
+          </td>
+          <td class="td_brit">&#160;</td>
+        </tr>
+        <tr>
+          <td class="td_brit">&#160;</td>
+          <td class="td_brit">Empresa:</td>
+          <td class="td_brit" colspan="5"><span t-field="o.company_id.company_registry"/></td>
+        </tr>
+        <tr>
+          <td class="td_brit">&#160;</td>
+          <td class="td_brit">Lugar y fecha:</td>
+          <td class="td_brit" colspan="3">
+            <span>Guatemala</span>&#160;
+            <span t-field="o.payment_date" t-options="{&quot;format&quot;: &quot;dd&quot;}"/>&#160;
+            <span>&#160;</span>
+            <span t-field="o.payment_date" t-options="{&quot;format&quot;: &quot;MMMM&quot;}"/>
+            <span>&#160;</span>
+            <span t-field="o.payment_date" t-options="{&quot;format&quot;: &quot;yyyy&quot;}"/>
+          </td>
+          <td class="td_brit">Importe:</td>
+          <td class="td_brit"><span t-esc="'{0:,.2f}'.format(o.amount)"/></td>
+        </tr>
+        <tr>
+          <td class="td_brit">&#160;</td>
+          <td class="td_brit">Beneficiario:</td>
+          <td class="td_brit" colspan="5">**<span t-field="o.partner_id.name"/>**</td>
+        </tr>
+        <tr>
+          <td class="td_brit">&#160;</td>
+          <td class="td_brit">Suma de:</td>
+          <td class="td_brit" colspan="5"><span t-esc="o.check_amount_in_words"/></td>
+        </tr>
+        <tr>
+          <td class="td_brit">&#160;</td>
+          <td class="td_brit">Cuenta Bancaria:</td>
+          <td class="td_brit" colspan="5">
+            <span t-field="o.journal_id.bank_acc_number"/>&#160;&#160;
+            <span t-field="o.journal_id.bank_id.name"/>
+          </td>
+        </tr>
+        <tr>
+          <td class="td_brit">&#160;</td>
+          <td class="td_brits">Cheque hecho por:</td>
+          <td class="td_brit" colspan="5"><span t-field="o.create_uid.name"/></td>
+        </tr>
+        <tr>
+          <td class="td_brit">&#160;</td>
+          <td class="td_brit">Referencia:</td>
+          <td class="td_brit" colspan="5"><span t-field="o.communication"/></td>
+        </tr>
+        <tr>
+          <td class="td_brit">&#160;</td>
+          <td class="td_brit">Observaciones:</td>
+          <td class="td_brit" colspan="5"><span t-field="o.observaciones"/></td>
+        </tr>
+        <tr>
+          <td class="td_brit">&#160;</td>
+          <td class="td_brit">&#160;</td>
+          <td class="td_brit">&#160;</td>
+          <td class="td_brit">&#160;</td>
+          <td class="td_brit">&#160;</td>
+          <td class="td_brit">&#160;</td>
+          <td class="td_brit">&#160;</td>
+        </tr>
+        <tr>
+          <td class="td_brita text_center" colspan="7"><b>DATOS DE SOLICITUD DE CHEQUE</b></td>
+        </tr>
+        <tr>
+          <td class="td_brit">&#160;</td>
+          <td class="td_brit">Solicitada por:</td>
+          <td class="td_brit">&#160;</td>
+          <td class="td_brit">Aprobada por:</td>
+          <td class="td_brit">&#160;</td>
+          <td class="td_brit">Recibido por:</td>
+          <td class="td_brit">&#160;</td>
+        </tr>
+        <tr t-foreach="range(2)" t-as="a">
+          <td class="td_brit">&#160;</td>
+          <td class="td_brit">&#160;</td>
+          <td class="td_brit">&#160;</td>
+          <td class="td_brit">&#160;</td>
+          <td class="td_brit">&#160;</td>
+          <td class="td_brit">&#160;</td>
+          <td class="td_brit">&#160;</td>
+        </tr>
+        <tr>
+          <td class="td_brit">&#160;</td>
+          <td class="td_brit_bottom">&#160;</td>
+          <td class="td_brit">&#160;</td>
+          <td class="td_brit_bottom">&#160;</td>
+          <td class="td_brit">&#160;</td>
+          <td class="td_brit_bottom">&#160;</td>
+          <td class="td_brit">&#160;</td>
+        </tr>
+        <tr>
+          <td class="td_brit">&#160;</td>
+          <td class="td_brit">&#160;</td>
+          <td class="td_brit">&#160;</td>
+          <td class="td_brit">&#160;</td>
+          <td class="td_brit">&#160;</td>
+          <td class="td_brit">&#160;</td>
+          <td class="td_brit">&#160;</td>
+        </tr>
+        <tr>
+          <td class="td_brit">&#160;</td>
+          <td class="td_brita text_center" colspan="3">POLIZA CONTABLE</td>
+          <td class="td_brit" colspan="3">&#160;</td>
+        </tr>
+        <tr>
+          <td class="td_brit">&#160;</td>
+          <td class="td_brit" colspan="3">CUENTA</td>
+          <td class="td_brit text_center">DEBE</td>
+          <td class="td_brit text_center">HABER</td>
+          <td class="td_brit">&#160;</td>
+        </tr>
+        <tr t-foreach="o.move_line_ids" t-as="l">
+          <td class="td_brit">&#160;</td>
+          <td class="td_brit" colspan="3">
+            <span t-field="l.account_id.code"/>&#160;<span t-field="l.account_id.name"/>
+          </td>
+          <td class="td_brit text_right">
+            <t t-if="l.debit">
+              <span t-esc="'{0:,.2f}'.format(l.debit)"/>
+            </t>
+          </td>
+          <td class="td_brit text_right">
+            <t t-if="l.credit">
+              <span t-esc="'{0:,.2f}'.format(l.credit)"/>
+            </t>
+          </td>
+          <td class="td_brit">&#160;</td>
+        </tr>
+      </table>
+    </div>
+  </template>
+
+</data>
+</odoo>

@@ -1,0 +1,256 @@
+<odoo>
+    <template id="presentacion">
+        <t t-call="website.layout">
+            <!--t t-set="title"></t-->
+            <div class="oe_structure">
+                <div id="carouselB" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" data-interval="5000">
+                            <img src="https://images.triumphmotorcycles.co.uk/media-library/images/motorcycles/modern-classics/2022%20special%20editions/rocket%203%20r%20221/model%20page/my22-rocket-221-hpr-1920x1080.jpg" class="d-block w-100 " alt="..." />
+                            <div class="carousel-content c-content-left w-50 text-break animate__animated animate__fadeInUp">
+                                <h1 class="text-h-responsive fadeIn">ROCKET 3 R 221 SPECIAL EDITION</h1>
+                                <p class="text-p-responsive fadeIn">La edición especial rinde homenaje a sus insuperables prestaciones y par motor máximo de 221 Newton metro.</p>
+                                <button class="btn btn-danger fadeIn">DESCUBRIR MÁS</button>
+                            </div>
+                        </div>
+
+                        <div class="carousel-item" data-interval="5000">
+                            <img src="https://images.triumphmotorcycles.co.uk/media-library/images/motorcycles/adventure-touring/tiger-1200-tease-2021/beat%204/hpr-b4-triumph_tiger_1200-1920x1080%203.jpg" class="d-block w-100" alt="..." />
+                            <div class="carousel-content c-content-right text-right w-50 text-break animate__animated animate__fadeInUp">
+                                <h1 class="text-h-responsive fadeIn">PURO DISEÑO CON UN ÚNICO PROPÓSITO</h1>
+                                <p class="text-p-responsive fadeIn">Pruebas oficiales del prototipo de la nueva Tiger 1200.</p>
+                                <button class="btn btn-danger fadeIn">DESCUBRIR MÁS</button>
+                            </div>
+                        </div>
+                        <div class="carousel-item" data-interval="5000">
+                            <video preload="none" playsinline="true" muted="true" loop="loop" poster="https://images.triumphmotorcycles.co.uk/media-library/images/motorcycles/modern-classics/gold%20lines%20my22/special_edition_my22_t120_black_details_nh_0045.jpg" itemprop="video" itemscope="true" autoplay="true" itemtype="http://schema.org/VideoObject" class="d-block w-100 ">
+                                <source src="https://images.triumphmotorcycles.co.uk/media-library/files/central-marketing-team/videos/family%20videos/goldlinehpr.mp4" type="video/mp4" />
+                            </video>
+                            <!--meta itemprop="thumbnail" content="https://images.triumphmotorcycles.co.uk/media-library/images/motorcycles/modern-classics/gold%20lines%20my22/special_edition_my22_t120_black_details_nh_0045.jpg" /-->
+                            <div class="carousel-content c-content-left w-50 text-break animate__animated animate__fadeInUp">
+                                <h1 class="text-h-responsive fadeIn">BONNEVILLE GOLD LINE EDITION</h1>
+                                <p class="text-p-responsive fadeIn">Un precioso iconos clásico con detalles pintados a mano...</p>
+                                <button class="btn btn-danger fadeIn">DESCUBRIR MÁS</button>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselB" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselB" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+
+                <!-- ENLACES -->
+                <div class="w-100 bg-dark d-flex align-items-center">
+                    <div class="container text-center">
+                        <div class="row w-100">
+                            <div class="col-12 col-md-4 py-3 btn-banner">
+                                <a href="#" class="text-muted text-decoration-none">Buscador de Concesionarios</a>
+                            </div>
+                            <div class="col-12 col-md-4 py-3 btn-banner">
+                                <a href="#" class="text-muted text-decoration-none">RESERVA TU PRUEBA DE CONDUCCI&#211;N</a>
+                            </div>
+                            <div class="col-12 col-md-4 py-3 btn-banner">
+                                <a href="#" class="text-muted btn-banner text-decoration-none">OFERTAS</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!---->
+                <div class="container">
+                    <h3 class="mt-5 text-center wow animate__animated animate__bounce">FEATURED MOTORCYCLES</h3>
+                </div>
+
+                <!-- GALERIA-->
+                <div class="custom-carousel container">
+                    <!--div class="contenedor-controles">
+                            <div class="indicadores"></div>
+                        </div-->
+
+                    <div class="contenedor-principal">
+                        <button role="button" id="flecha-izquierda" class="flecha-izquierda">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-left-fill" viewBox="0 0 16 16">
+                                <path d="m3.86 8.753 5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 0 0-1.659-.753l-5.48 4.796a1 1 0 0 0 0 1.506z" />
+                            </svg>
+                        </button>
+
+                        <div class="contenedor-carousel">
+                            <div class="carousel">
+                                <div class="custom-carousel-item">
+                                    <div class="card border-0 carousel-item-content">
+                                        <img src="https://images.triumphmotorcycles.co.uk/media-library/images/motorcycles/adventure-touring/my22/ll1%20tiger%20sport%20660/base%20images/korosi%20red%20graphite/tiger-sport-660-korosi-red-nav-770x443.jpg" alt="" class="card-img-top" />
+                                        <div class="card-body">
+                                            <h5>Nueva Tiger Sport 660</h5>
+                                            <p>El precio se anunciará próximamente</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="custom-carousel-item">
+                                    <div class="card border-0 carousel-item-content">
+                                        <img src="https://images.triumphmotorcycles.co.uk/media-library/images/motorcycles/adventure-touring/my22/ll1%20tiger%20sport%20660/base%20images/korosi%20red%20graphite/tiger-sport-660-korosi-red-nav-770x443.jpg" alt="" class="card-img-top" />
+                                        <div class="card-body">
+                                            <h5>Nueva Tiger Sport 660</h5>
+                                            <p>El precio se anunciará próximamente</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="custom-carousel-item">
+                                    <div class="card border-0 carousel-item-content">
+                                        <img src="https://images.triumphmotorcycles.co.uk/media-library/images/motorcycles/adventure-touring/my22/ll1%20tiger%20sport%20660/base%20images/korosi%20red%20graphite/tiger-sport-660-korosi-red-nav-770x443.jpg" alt="" class="card-img-top" />
+                                        <div class="card-body">
+                                            <h5>Nueva Tiger Sport 660</h5>
+                                            <p>El precio se anunciará próximamente</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="custom-carousel-item">
+                                    <div class="card border-0 carousel-item-content">
+                                        <img src="https://images.triumphmotorcycles.co.uk/media-library/images/motorcycles/adventure-touring/my22/ll1%20tiger%20sport%20660/base%20images/korosi%20red%20graphite/tiger-sport-660-korosi-red-nav-770x443.jpg" alt="" class="card-img-top" />
+                                        <div class="card-body">
+                                            <h5>Nueva Tiger Sport 660</h5>
+                                            <p>El precio se anunciará próximamente</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="custom-carousel-item">
+                                    <div class="card border-0 carousel-item-content">
+                                        <img src="https://images.triumphmotorcycles.co.uk/media-library/images/motorcycles/adventure-touring/my22/ll1%20tiger%20sport%20660/base%20images/korosi%20red%20graphite/tiger-sport-660-korosi-red-nav-770x443.jpg" alt="" class="card-img-top" />
+                                        <div class="card-body">
+                                            <h5>Nueva Tiger Sport 660</h5>
+                                            <p>El precio se anunciará próximamente</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="custom-carousel-item">
+                                    <div class="card border-0 carousel-item-content">
+                                        <img src="https://images.triumphmotorcycles.co.uk/media-library/images/motorcycles/adventure-touring/my22/ll1%20tiger%20sport%20660/base%20images/korosi%20red%20graphite/tiger-sport-660-korosi-red-nav-770x443.jpg" alt="" class="card-img-top" />
+                                        <div class="card-body">
+                                            <h5>Nueva Tiger Sport 660</h5>
+                                            <p>El precio se anunciará próximamente</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="custom-carousel-item">
+                                    <div class="card border-0 carousel-item-content">
+                                        <img src="https://images.triumphmotorcycles.co.uk/media-library/images/motorcycles/adventure-touring/my22/ll1%20tiger%20sport%20660/base%20images/korosi%20red%20graphite/tiger-sport-660-korosi-red-nav-770x443.jpg" alt="" class="card-img-top" />
+                                        <div class="card-body">
+                                            <h5>Nueva Tiger Sport 660</h5>
+                                            <p>El precio se anunciará próximamente</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button role="button" id="flecha-derecha" class="flecha-derecha">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                                <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!---->
+                <div class="container mt-4">
+                    <div class="row">
+                        <div class="col-12 col-md-4">
+                            <div class="card">
+                                <img src="https://images.triumphmotorcycles.co.uk/media-library/images/motorcycles/adventure-touring/my22/ll1%20tiger%20sport%20660/base%20images/korosi%20red%20graphite/tiger-sport-660-korosi-red-nav-770x443.jpg" alt="" class="card-img-top" />
+                                <div class="card-body">
+                                    <h5>Nueva Tiger Sport 660</h5>
+                                    <p>El precio se anunciará próximamente</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="card">
+                                <img src="https://images.triumphmotorcycles.co.uk/media-library/images/motorcycles/adventure-touring/my22/ll1%20tiger%20sport%20660/base%20images/korosi%20red%20graphite/tiger-sport-660-korosi-red-nav-770x443.jpg" alt="" class="card-img-top" />
+                                <div class="card-body">
+                                    <h5>Nueva Tiger Sport 660</h5>
+                                    <p>El precio se anunciará próximamente</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <div class="card">
+                                <img src="https://images.triumphmotorcycles.co.uk/media-library/images/motorcycles/adventure-touring/my22/ll1%20tiger%20sport%20660/base%20images/korosi%20red%20graphite/tiger-sport-660-korosi-red-nav-770x443.jpg" alt="" class="card-img-top" />
+                                <div class="card-body">
+                                    <h5>Nueva Tiger Sport 660</h5>
+                                    <p>El precio se anunciará próximamente</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!---->
+                <div class="container text-center  mt-5">
+                    <a class="h3 text-center" style="color: black" href="#">CONFIGURE</a>
+                </div>
+
+                <!---->
+                <div class="container mt-5">
+                    <div class="row">
+                        <div class="col-12 col-md-4">
+                            <h3>TRIUMPH, "NO TIME TO DIE"</h3>
+                            <p>
+                        Esta asociación unió por primera vez a dos grandes iconos británicos como son 007™ y las motos
+                        Triumph.
+    
+                        Sigue leyendo si quieres descubrir más detalles de esta emocionante colaboración, incluyendo
+                        imágenes del ‘making-of’ y una entrevista en exclusiva con Lee Morrison, el coordinador de
+                        especialistas, en la que explica qué tal se portaron las Tiger 900 y la Scrambler 1200 en la
+                        película.
+                            </p>
+                            <button class="btn btn-danger">DESCUBRIR MÁS</button>
+                        </div>
+                        <div class="col-12 col-md-8">
+                            <img class="d-block w-100" src="https://images.triumphmotorcycles.co.uk/media-library/images/central%20marketing%20team/james%20bond%20partnership/nttd_on_set_rehearsals-hero1-600x338.jpg" alt="" />
+                        </div>
+                    </div>
+                </div>
+
+                <!---->
+                <div class="container mt-2">
+                    <div class="row">
+                        <div class="col-12 col-md-6 mt-3">
+                            <div class="card">
+                                <img src="https://images.triumphmotorcycles.co.uk/media-library/images/central%20marketing%20team/for%20the%20ride/experiences/spain%20adventure%20experience/home-spain-tae-card-1-770x770.jpg" alt="" class="car-img-top" />
+                                <div class="card-body">
+                                    <h2>Spain Adventure Experience</h2>
+                                    <p>Experimenta todas las emociones de la conducción off-road </p>
+                                    <a href="#" class="btn btn-dark py-2">DESCUBRIR MÁS</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 mt-3">
+                            <div class="card">
+                                <img src="https://images.triumphmotorcycles.co.uk/media-library/images/central%20marketing%20team/for%20the%20ride/experiences/spain%20adventure%20experience/home-spain-tae-card-1-770x770.jpg" alt="" class="car-img-top" />
+                                <div class="card-body">
+                                    <h2>Spain Adventure Experience</h2>
+                                    <p>Experimenta todas las emociones de la conducción off-road </p>
+                                    <a href="#" class="btn btn-dark py-2">DESCUBRIR MÁS</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 mt-3">
+                            <div class="card">
+                                <img src="https://images.triumphmotorcycles.co.uk/media-library/images/central%20marketing%20team/for%20the%20ride/experiences/spain%20adventure%20experience/home-spain-tae-card-1-770x770.jpg" alt="" class="car-img-top" />
+                                <div class="card-body">
+                                    <h2>Spain Adventure Experience</h2>
+                                    <p>Experimenta todas las emociones de la conducción off-road </p>
+                                    <a href="#" class="btn btn-dark py-2">DESCUBRIR MÁS</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

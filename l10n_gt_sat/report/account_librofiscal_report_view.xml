@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <template id="librofiscal">
+    <t t-call="web.html_container">
+      <t t-set="data_report_margin_top" t-value="12"/>
+      <t t-set="data_report_header_spacing" t-value="9"/>
+      <t t-set="data_report_dpi" t-value="110"/>
+      <t t-foreach="docs" t-as="o">
+
+      <t t-foreach="libros" t-as="libro">
+        <t t-call="web.basic_layout">
+          <div class="header">
+						<div class="row">
+							<div class="col-3">
+								<span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/>
+							</div>
+							<div class="col-2 offset-2 text-center">
+								<span t-esc="res_company.company_registry"/>
+							</div>
+							<div class="col-2 offset-3 text-right">
+								<t t-set="o" t-value="modelo"/>
+								<ul class="list-inline">
+									Folio: <t t-call="l10n_gt_sat.counter_folio"></t>
+								</ul>
+							</div>
+						</div>
+					</div>
+      <div class="page">
+        <br/>
+              <h3>Libro de
+                <span t-esc="libro['descripcion']"/></h3>
+              <h5>Del:
+                <span t-esc="libro['del']"/>
+                Al:
+                <span t-esc="libro['al']"/></h5>
+                <h5>Resolucion:<span t-esc="data['resolucion']"/></h5>
+
+
+              <t t-if="libro['libro'] == 'sale'">
+                <t t-if="libro['tipo'] == 'detallado'">
+                  <t t-call="l10n_gt_sat.librofiscal_ventas"/>
+                </t>
+                <t t-else="">
+                  <t t-call="l10n_gt_sat.librofiscal_ventas_resumido"/>
+                </t>
+              </t>
+              <t t-else="">
+                <!-- <t t-call="l10n_gt_sat.librofiscal_compras"/> -->
+
+                <t t-if="libro['tipo'] == 'detallado'">
+                  <t t-call="l10n_gt_sat.librofiscal_compras"/>
+                </t>
+                <t t-else="">
+                  <t t-call="l10n_gt_sat.librofiscal_compras_resumido"/>
+                </t>
+              </t>
+
+            </div>
+            <div class="footer">
+                 <div class="text-center" style="border-top: 1px solid black;">
+
+                     <ul class="list-inline">
+                         <li>Pagina: <span class="page"/>/<span class="topage"/></li>
+                     </ul>
+                 </div>
+             </div>
+          </t>
+        </t>
+      </t>
+    </t>
+  </template>
+
+  <template id="librofiscal_ventas_resumido">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Fecha</th>
+          <th scope="col">Servicios</th>
+          <th scope="col">Ventas</th>
+          <th scope="col">Subtotal</th>
+          <th scope="col">Iva</th>
+          <th scope="col">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <t t-foreach="libro['resumido']" t-as="r">
+          <tr>
+            <td><span t-esc="r[1]['dia']" t-options='{"widget": "date"}'/></td>
+            <td class="text-right"><span t-esc="r[1]['sat_servicio']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+            <td class="text-right"><span t-esc="r[1]['sat_bien']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+            <td class="text-right"><span t-esc="r[1]['sat_subtotal']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+            <td class="text-right"><span t-esc="r[1]['sat_iva']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+            <td class="text-right"><span t-esc="r[1]['sat_amount_total']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+          </tr>
+        </t>
+      </tbody>
+      <t t-set="r" t-value="libro['resumen']"/>
+      <tr>
+        <td></td>
+        <td class="text-right"><span t-esc="r['servicio']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+        <td class="text-right"><span t-esc="r['bien']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+        <td class="text-right"><span t-esc="r['sat_subtotal_total']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+        <td class="text-right"><span t-esc="r['sat_iva_total']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+        <td class="text-right"><span t-esc="r['amount_total_total']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+        <td></td>
+      </tr>
+    </table>
+  </template>
+
+  <template id="librofiscal_compras_resumido">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Fecha</th>
+          <th scope="col">Excenta</th>
+          <th scope="col">Imp. Fuera CA</th>
+          <th scope="col">Imp. CA</th>
+          <th scope="col">Servicios</th>
+          <th scope="col">Compra Activos F.</th>
+          <th scope="col">Peq. Cont.</th>
+          <th scope="col">Bienes</th>
+          <th scope="col">Combust.</th>
+          <th scope="col">Iva</th>
+          <th scope="col">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <t t-foreach="libro['resumido']" t-as="r">
+          <tr>
+            <td><span t-esc="r[1]['dia']" t-options='{"widget": "date"}'/></td>
+            <td class="text-right"><span t-esc="r[1]['sat_exento']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+            <td class="text-right"><span t-esc="r[1]['sat_importa_out_ca']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+            <td class="text-right"><span t-esc="r[1]['sat_importa_in_ca']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+            <td class="text-right"><span t-esc="r[1]['sat_servicio']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+            <td class="text-right"><span t-esc="r[1]['sat_peq_contri']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+            <td class="text-right"><span t-esc="r[1]['sat_bien']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+            <td class="text-right"><span t-esc="r[1]['sat_combustible']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+            <td class="text-right"><span t-esc="r[1]['sat_base']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+            <td class="text-right"><span t-esc="r[1]['sat_iva']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+            <td class="text-right"><span t-esc="r[1]['sat_amount_total']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+          </tr>
+        </t>
+      </tbody>
+      <t t-set="r" t-value="libro['resumen']"/>
+      <tr>
+        <td></td>
+        <td class="text-right"><span t-esc="r['sat_exento']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+        <td class="text-right"><span t-esc="r['sat_importa_out_ca']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+        <td class="text-right"><span t-esc="r['sat_importa_in_ca']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+        <td class="text-right"><span t-esc="r['servicio']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+        <td class="text-right"><span t-esc="r['sat_peq_contri']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+        <td class="text-right"><span t-esc="r['bien']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+        <td class="text-right"><span t-esc="r['sat_combustible']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+        <td class="text-right"><span t-esc="r['sat_base']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+        <td class="text-right"><span t-esc="r['sat_iva_total']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+        <td class="text-right"><span t-esc="r['amount_total_total']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+        <td></td>
+      </tr>
+    </table>
+  </template>
+
+  <template id="librofiscal_ventas">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">No.</th>
+          <th scope="col">Cod.</th>
+          <th scope="col">Fecha</th>
+          <th scope="col">Tipo</th>
+          <th scope="col">Serie</th>
+          <th scope="col">No. Factura</th>
+          <th scope="col">Nit</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Exenta</th>
+          <th scope="col">Exp. Centro A.</th>
+          <th scope="col">Exp. Fuera Centro A.</th>
+          <th scope="col">Servicios</th>
+          <th scope="col">Ventas</th>
+          <th scope="col">Subtotal</th>
+          <th scope="col">Iva</th>
+          <th scope="col">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <t t-foreach="libro['facturas']" t-as="f">
+          <tr>
+            <th scope="row"><span t-field="f.no_linea"/></th>
+            <td><span t-field="f.journal_id.code"/></td>
+            <td><span t-field="f.invoice_date" t-options='{"widget": "date"}'/></td>
+            <td><span t-field="f.journal_id.tipo_documento"/></td>
+            <td><span t-field="f.sat_fac_serie"/></td>
+            <td><span t-field="f.sat_fac_numero"/></td>
+            <t t-if="f.state == 'cancel'">
+              <td></td>
+              <td>Anulado</td>
+            </t>
+            <t t-else="">
+              <td><span t-field="f.partner_id.vat"/></td>
+              <td><span t-field="f.partner_id.name"/></td>
+            </t>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td class="text-right"><span t-field="f.sat_servicio" t-options='{"widget": "monetary", "display_currency": f.journal_id.currency_id}'/></td>
+            <td class="text-right"><span t-field="f.sat_bien" t-options='{"widget": "monetary", "display_currency": f.journal_id.currency_id}'/></td>
+            <td class="text-right"><span t-field="f.sat_subtotal" t-options='{"widget": "monetary", "display_currency": f.journal_id.currency_id}'/></td>
+            <td class="text-right"><span t-field="f.sat_iva" t-options='{"widget": "monetary", "display_currency": f.journal_id.currency_id}'/></td>
+            <td class="text-right"><span t-field="f.sat_amount_total" t-options='{"widget": "monetary", "display_currency": f.journal_id.currency_id}'/></td>
+          </tr>
+        </t>
+      </tbody>
+      <t t-set="r" t-value="libro['resumen']"/>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td class="text-right"><span t-esc="r['servicio']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+        <td class="text-right"><span t-esc="r['bien']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+        <td class="text-right"><span t-esc="r['sat_subtotal_total']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+        <td class="text-right"><span t-esc="r['sat_iva_total']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+        <td class="text-right"><span t-esc="r['amount_total_total']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+      </tr>
+    </table>
+  </template>
+
+  <template id="librofiscal_compras">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">No.</th>
+          <th scope="col">Cod.</th>
+          <th scope="col">Fecha</th>
+          <th scope="col">Serie</th>
+          <th scope="col">No. Factura</th>
+          <th scope="col">Nit</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Exenta</th>
+          <th scope="col">Importacion fuera CA</th>
+          <th scope="col">Importacion CA</th>
+          <th scope="col">Servicios</th>
+          <th scope="col">Compra de activos fijos</th>
+          <th scope="col">Pequenio Contrib.</th>
+          <th scope="col">Bienes</th>
+          <th scope="col">Combust.</th>
+          <th scope="col">
+            <p>Base para
+            </p>compras</th>
+          <th scope="col">IVA</th>
+          <th scope="col">Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <t t-foreach="libro['facturas']" t-as="f">
+          <tr>
+            <th scope="row"><span t-field="f.no_linea"/></th>
+            <td><span t-field="f.journal_id.code"/></td>
+            <td><span t-field="f.invoice_date" t-options='{"widget": "date"}'/></td>
+            <td><span t-field="f.sat_fac_serie"/></td>
+            <td><span t-field="f.sat_fac_numero"/></td>
+            <td><span t-field="f.partner_id.vat"/></td>
+            <td><span t-field="f.partner_id.name"/></td>
+            <td class="text-right"><span t-field="f.sat_exento" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+            <td class="text-right"><span t-field="f.sat_importa_out_ca" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+            <td class="text-right"><span t-field="f.sat_importa_in_ca" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+            <td class="text-right"><span t-field="f.sat_servicio" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+            <td></td>
+            <td class="text-right"><span t-field="f.sat_peq_contri" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+            <td class="text-right"><span t-field="f.sat_bien" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+            <td class="text-right"><span t-field="f.sat_combustible" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+            <td class="text-right"><span t-field="f.sat_base" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+            <td class="text-right"><span t-field="f.sat_iva" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+            <td class="text-right"><span t-field="f.sat_amount_total" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+          </tr>
+        </t>
+      </tbody>
+      <t t-set="r" t-value="libro['resumen']"/>
+      <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td class="text-right"><span t-esc="r['sat_exento']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+        <td class="text-right"><span t-esc="r['sat_importa_out_ca']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+        <td class="text-right"><span t-esc="r['sat_importa_in_ca']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+        <td class="text-right"><span t-esc="r['servicio']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+        <td></td>
+        <td class="text-right"><span t-esc="r['sat_peq_contri']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+        <td class="text-right"><span t-esc="r['bien']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+        <td class="text-right"><span t-esc="r['sat_combustible']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+        <td class="text-right"><span t-esc="r['sat_base']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+        <td class="text-right"><span t-esc="r['sat_iva_total']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+        <td class="text-right"><span t-esc="r['amount_total_total']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+      </tr>
+    </table>
+    <p style="page-break-before:always;"> </p>
+    <table class="table">
+      <tr>
+        <th colspan="4">Resumen</th>
+      </tr>
+      <tr>
+        <th>Concepto</th>
+        <th>Base Imponible</th>
+        <th>Iva</th>
+        <th>Total</th>
+      </tr>
+
+      <tr>
+        <td>Servicio</td>
+        <td class="text-right"><span t-esc="r['servicio']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+        <td class="text-right"><span t-esc="r['servicio_iva']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+        <td class="text-right"><span t-esc="r['servicio_total']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+      </tr>
+      <tr>
+        <td>Bienes</td>
+        <td class="text-right"><span t-esc="r['bien']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+        <td class="text-right"><span t-esc="r['bien_iva']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+        <td class="text-right"><span t-esc="r['bien_total']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+      </tr>
+      <tr>
+        <td>Pequeño Contribuyente</td>
+        <td class="text-right"><span t-esc="r['sat_peq_contri']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+        <td class="text-right"><span t-esc="float(0)" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+        <td class="text-right"><span t-esc="r['sat_peq_contri']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+      </tr>
+      <tr>
+        <td>Combustible</td>
+        <td class="text-right"><span t-esc="r['sat_combustible']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+        <td class="text-right"><span t-esc="r['sat_combustible_iva']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+        <td class="text-right"><span t-esc="r['sat_combustible_total']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+      </tr>
+      <tr>
+        <td>Importaciones DUCA in CA</td>
+        <td class="text-right"><span t-esc="r['sat_importa_in_ca']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+        <td class="text-right"><span t-esc="r['sat_importa_in_ca_iva']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+        <td class="text-right"><span t-esc="r['sat_importa_in_ca_total']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+      </tr>
+      <tr>
+        <td>Total</td>
+        <td class="text-right"><span t-esc="r['sat_total_general_base']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+        <td class="text-right"><span t-esc="r['sat_total_general_iva']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+        <td class="text-right"><span t-esc="r['sat_total_general']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+      </tr>
+    </table>
+    <p style="page-break-before:always;"> </p>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Nit</th>
+          <th>Cliente</th>
+          <th>Cantidad</th>
+          <th>Monto Base</th>
+        </tr>
+      </thead>
+      <tbody>
+        <t t-foreach="libro['top10_documentos']" t-as="t">
+          <tr>
+            <td><span t-field="t['partner'].vat"/></td>
+            <td><span t-field="t['partner'].name"/></td>
+            <td class="text-right"><span t-esc="t['cant_docs']"/></td>
+            <td class="text-right"><span t-esc="t['sat_base']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+          </tr>
+        </t>
+        <tr>
+          <td></td>
+          <td><span t-esc="libro['top10_documentos_diferencia']['name']"/></td>
+          <td class="text-right"><span t-esc="libro['top10_documentos_diferencia']['cant_docs']"/></td>
+          <td class="text-right"><span t-esc="libro['top10_documentos_diferencia']['sat_base']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><span t-esc="libro['top10_documentos_total']['name']"/></td>
+          <td class="text-right"><span t-esc="libro['top10_documentos_total']['cant_docs']"/></td>
+          <td class="text-right"><span t-esc="libro['top10_documentos_total']['sat_base']" t-options='{"widget": "monetary", "display_currency": currency}'/></td>
+        </tr>
+      </tbody>
+    </table>
+  </template>
+
+  <template id="counter_folio">
+    <span class="current_folio"></span>
+    <span class="page" hidden="true" />
+    <t t-if="o.folio != 0">
+      <script>
+        var currentNoFolioNumber =
+        <t t-esc="o.folio - 1 " />
+        ;
+        //var temps = document.getElementById('current_folio');
+        
+        var temp = {};
+        
+        var params = document.location.search.substr(1);
+        
+        params = params.split('&amp;');
+        
+        for(var i = 0 ; i &lt; params.length; i++) {
+          var split_param = params[i].split('=',2);
+          
+          if( split_param[0] == 'page'){
+            temp[split_param[0]] = parseInt(unescape(split_param[1])) + currentNoFolioNumber;
+          } else {
+            temp[split_param[0]] = unescape(split_param[1]);
+          }
+        }
+        
+        
+        var elements = document.getElementsByClassName("current_folio");
+        for( var i = 0 ; i &lt; elements.length; i++) {
+        elements[i].innerText = temp['page'];
+        }
+        //var classes = ["frompage", "topage", "page", "webpage", "section", "subsection", "subsubsection"];
+        /*for( var i = 0 ; i &lt; classes.length; i++) {
+          var elements = document.getElementsByClassName(classes[i]);
+          
+          //for(var j = 0; j &lt; elements.length; j++) {
+            //temps.innerText = temp[classes[i]];
+            //elements[j].textContent = temp[classes[i]];
+          //}
+        }*/
+      </script>
+    </t>
+  </template>
+
+</odoo>

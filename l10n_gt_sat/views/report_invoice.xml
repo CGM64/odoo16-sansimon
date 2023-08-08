@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_invoice_inherit_sat" inherit_id="account.report_invoice_document">
+    	<xpath expr="//h2" position="replace">
+            <h2>
+                <span t-if="o.type == 'out_invoice' and o.state == 'posted'"><span t-field="o.journal_id.invoice_name"/></span>
+                <span t-if="o.type == 'out_invoice' and o.state == 'draft'">Draft Invoice</span>
+                <span t-if="o.type == 'out_invoice' and o.state == 'cancel'">Cancelled Invoice</span>
+                <span t-if="o.type == 'out_refund'">Credit Note</span>
+                <span t-if="o.type == 'in_refund'">Vendor Credit Note</span>
+                <span t-if="o.type == 'in_invoice'">Vendor Bill</span>
+                <span t-if="o.name != '/'" t-field="o.name"/>
+            </h2>
+        </xpath>
+    </template>
+</odoo>

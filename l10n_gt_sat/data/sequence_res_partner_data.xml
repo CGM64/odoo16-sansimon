@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="sequence_contactos" model="ir.sequence">
+            <field name="name">Contactos Secuencia</field>
+            <field name="code">res.partner.sequence</field>
+            <field name="active">True</field>
+            <field name="prefix">%(y)s</field>
+            <field name="padding">4</field>
+            <field name="number_next">1</field>
+            <field name="number_increment">1</field>
+            <field name="use_date_range">True</field>
+        </record>
+
+        <record id="view_res_partner_filter_referencia_interna" model="ir.ui.view">
+            <field name="name">res.partner.sat.inherit.search</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+                <field name="user_id" position="after">
+                    <field name="default_code" filter_domain="[('default_code', 'ilike', self)]"/>
+                </field>
+                <field name="name" position="replace">
+                    <field name="name" filter_domain="['|', '|', '|', ('display_name', 'ilike', self), ('ref', '=', self), ('email', 'ilike', self), ('vat', 'like', self)]"/>
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>

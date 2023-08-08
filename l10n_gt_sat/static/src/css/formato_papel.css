@@ -1,0 +1,17 @@
+.artml_table {
+  border: 1px solid black;
+  width:100%;
+}
+td{
+  border: 1px solid black;
+}
+
+.watermark{
+  transform:rotate(300deg);
+  -webkit-transform:rotate(300deg);
+  opacity:0.25;
+  top:5%;
+  position: absolute;
+  text-align:center;
+  width:95%;
+}

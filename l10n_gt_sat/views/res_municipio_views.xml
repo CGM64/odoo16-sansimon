@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <!-- Municipios -->
+    <record id="view_state_municipio_tree" model="ir.ui.view">
+        <field name="name">res.state.municipio.tree</field>
+        <field name="model">res.state.municipio</field>
+        <field name="arch" type="xml">
+            <tree string="Municipio" editable="bottom">
+                <field name="name"/>
+                <field name="code"/>
+                <field name="state_id" options="{'no_create': True, 'no_open': True}"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_state_municipio_form" model="ir.ui.view">
+        <field name="name">res.state.municipio.form</field>
+        <field name="model">res.state.municipio</field>
+        <field name="arch" type="xml">
+            <form string="Municipio">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="code"/>
+                        <field name="state_id" options='{"no_open": True, "no_create": True}'/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_state_municipio_search" model="ir.ui.view">
+        <field name="name">res.state.municipio.search</field>
+        <field name="model">res.state.municipio</field>
+        <field name="arch" type="xml">
+            <search string="Departamento">
+                <field name="name"/>
+                <field name="state_id"/>
+                <group string="Group By">
+                    <filter name="groupby_state" string="Departamento" context="{'group_by': 'state_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_state_municipio" model="ir.actions.act_window">
+        <field name="name">Municipios</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.state.municipio</field>
+        <field name="view_id" ref="view_state_municipio_tree"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crear un Municipio
+            </p><p>
+                Federal States belong to countries and are part of your contacts' addresses.
+            </p>
+        </field>
+    </record>
+    
+    <menuitem id="menu_country_municipio_partner"
+        action="action_state_municipio"
+        parent="contacts.menu_localisation"
+        sequence="3"/>
+</odoo>

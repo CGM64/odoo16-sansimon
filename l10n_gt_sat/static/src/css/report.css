@@ -1,0 +1,47 @@
+.aym_table{
+ width:100%;
+ align:center;
+}
+.aym_td{
+  width: 45px;
+  border-width: 1px;
+  border-style: solid;
+}
+.sat_table {
+  width: 100%;
+
+}
+.sat_table_fiscal {
+  width: 2000px;
+
+}
+.sat_td{
+  border-width: 2px;
+  border-style: solid;
+}
+.sat_td_stotal{
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
+}
+.sat_td_total{
+  border-bottom: 4px double;
+}
+.sat_td{
+  padding: 2px;
+}
+.sat_td_fiscal{
+  width: 100px;
+}
+.sat_td_fiscal_center{
+  width: 100px;
+  text-align:center;
+}
+.sat_td_fiscal_cantidad{
+  width: 100px;
+  text-align:right;
+}
+.sat_td_fiscal_cantidad_totales{
+  width: 100px;
+  text-align:right;
+  border-top: 2px solid black;
+}

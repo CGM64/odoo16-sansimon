@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_product_dai,access_product_dai,model_product_dai,base.group_user,1,1,1,1
+access_product_grupoutilidad,access_product_grupoutilidad,model_product_grupoutilidad,base.group_user,1,1,1,1
+access_product_marca,access_product_marca,model_product_marca,base.group_user,1,1,1,1
+access_product_tag,access_product_tag,model_product_tag,base.group_user,1,1,1,1
+manager_res_state_municipio,manager_res_state_municipio,model_res_state_municipio,account.group_account_manager,1,1,1,1
+
+
+access_res_state_municipio,access_res_state_municipio,model_res_state_municipio,base.group_user,1,0,0,0

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data noupdate="0">
+    <record id="product_dai_01" model="product.dai"><field name="name">Accesorio de Aseo Personal: 15%</field><field name="porcentaje">15</field></record>
+    <record id="product_dai_02" model="product.dai"><field name="name">Accesorio de Cámara: 15%</field><field name="porcentaje">15</field></record>
+    <record id="product_dai_03" model="product.dai"><field name="name">Accesorio de Carro: 15%</field><field name="porcentaje">15</field></record>
+    <record id="product_dai_04" model="product.dai"><field name="name">Accesorio de Cocina: 15%</field><field name="porcentaje">15</field></record>
+    <record id="product_dai_05" model="product.dai"><field name="name">Accesorio de Computacion: 15%</field><field name="porcentaje">15</field></record>
+    <record id="product_dai_06" model="product.dai"><field name="name">Accesorio de Musica: 15%</field><field name="porcentaje">15</field></record>
+    <record id="product_dai_07" model="product.dai"><field name="name">Accesorio de Oficina: 15%</field><field name="porcentaje">15</field></record>
+    <record id="product_dai_08" model="product.dai"><field name="name">Accesorio de Telefonia: 15%</field><field name="porcentaje">15</field></record>
+    <record id="product_dai_09" model="product.dai"><field name="name">Accesorio Deportivo: 15%</field><field name="porcentaje">15</field></record>
+    <record id="product_dai_10" model="product.dai"><field name="name">Accesorio Electrico: 0%</field><field name="porcentaje">0</field></record>
+    <record id="product_dai_11" model="product.dai"><field name="name">Articulos de Cuero: 15%</field><field name="porcentaje">15</field></record>
+    <record id="product_dai_12" model="product.dai"><field name="name">Articulos de Fiesta: 15%</field><field name="porcentaje">15</field></record>
+    <record id="product_dai_13" model="product.dai"><field name="name">Bateria de Carro: 15%</field><field name="porcentaje">15</field></record>
+    <record id="product_dai_14" model="product.dai"><field name="name">Bicicleta: 15%</field><field name="porcentaje">15</field></record>
+    <record id="product_dai_15" model="product.dai"><field name="name">Bocinas de Carro: 0%</field><field name="porcentaje">0</field></record>
+    <record id="product_dai_16" model="product.dai"><field name="name">Bolsas: 15%</field><field name="porcentaje">15</field></record>
+    <record id="product_dai_17" model="product.dai"><field name="name">Cables: 10%</field><field name="porcentaje">10</field></record>
+    <record id="product_dai_18" model="product.dai"><field name="name">Camara Fotografica: 0%</field><field name="porcentaje">0</field></record>
+    <record id="product_dai_19" model="product.dai"><field name="name">Cartucho de tinta (Simple): 10%</field><field name="porcentaje">10</field></record>
+    <record id="product_dai_20" model="product.dai"><field name="name">Cartucho de Tinta C/Chip: 0%</field><field name="porcentaje">0</field></record>
+    <record id="product_dai_21" model="product.dai"><field name="name">Catalogos: 15%</field><field name="porcentaje">15</field></record>
+    <record id="product_dai_22" model="product.dai"><field name="name">CD´s: 10% +3% IPSA</field><field name="porcentaje">13</field></record>
+    <record id="product_dai_23" model="product.dai"><field name="name">Celulares: 0%</field><field name="porcentaje">0</field></record>
+    <record id="product_dai_24" model="product.dai"><field name="name">Cinta de Impresora: 5%</field><field name="porcentaje">0</field></record>
+    <record id="product_dai_25" model="product.dai"><field name="name">Computadoras: 0%</field><field name="porcentaje">0</field></record>
+    <record id="product_dai_26" model="product.dai"><field name="name">Consola de Videojuegos: 15%</field><field name="porcentaje">15</field></record>
+    <record id="product_dai_27" model="product.dai"><field name="name">Cosmeticos: 15%</field><field name="porcentaje">15</field></record>
+    <record id="product_dai_28" model="product.dai"><field name="name">Cuadernos: 15%</field><field name="porcentaje">15</field></record>
+    <record id="product_dai_29" model="product.dai"><field name="name">Discos Duros Vacios: 0%</field><field name="porcentaje">0</field></record>
+    <record id="product_dai_30" model="product.dai"><field name="name">DVD Player: 15% +3% IPSA</field><field name="porcentaje">18</field></record>
+    <record id="product_dai_31" model="product.dai"><field name="name">Edredon: 15%</field><field name="porcentaje">15</field></record>
+    <record id="product_dai_32" model="product.dai"><field name="name">Electrodomesticos: 15%</field><field name="porcentaje">15</field></record>
+    <record id="product_dai_33" model="product.dai"><field name="name">Equipo Medico: 0%</field><field name="porcentaje">0</field></record>
+    <record id="product_dai_34" model="product.dai"><field name="name">Estuche de Cuero: 15%</field><field name="porcentaje">15</field></record>
+    <record id="product_dai_35" model="product.dai"><field name="name">Estuche Partes Plasticas: 15%</field><field name="porcentaje">15</field></record>
+    <record id="product_dai_36" model="product.dai"><field name="name">Etiquetas de Papel o Carton: 15%</field><field name="porcentaje">15</field></record>
+    <record id="product_dai_37" model="product.dai"><field name="name">Etiquetas de Tela: 15%</field><field name="porcentaje">15</field></record>
+    <record id="product_dai_38" model="product.dai"><field name="name">Grabadoras: 15%</field><field name="porcentaje">15</field></record>
+    <record id="product_dai_39" model="product.dai"><field name="name">Herramientas de Mano: 0%</field><field name="porcentaje">0</field></record>
+    <record id="product_dai_40" model="product.dai"><field name="name">Impresoras: 0%</field><field name="porcentaje">0</field></record>
+    <record id="product_dai_41" model="product.dai"><field name="name">Joyeria/Bisuteria: 15%</field><field name="porcentaje">15</field></record>
+    <record id="product_dai_42" model="product.dai"><field name="name">Juguetes: 15%</field><field name="porcentaje">15</field></record>
+    <record id="product_dai_43" model="product.dai"><field name="name">Laptop: 0%</field><field name="porcentaje">0</field></record>
+    <record id="product_dai_44" model="product.dai"><field name="name">Lentes: 15%</field><field name="porcentaje">15</field></record>
+    <record id="product_dai_45" model="product.dai"><field name="name">Lentes (solo aro): 0%</field><field name="porcentaje">0</field></record>
+    <record id="product_dai_46" model="product.dai"><field name="name">Lentes de Contacto: 5%</field><field name="porcentaje">0</field></record>
+    <record id="product_dai_47" model="product.dai"><field name="name">Lentes de Sol: 15%</field><field name="porcentaje">15</field></record>
+    <record id="product_dai_48" model="product.dai"><field name="name">Libros: 0%</field><field name="porcentaje">0</field></record>
+    <record id="product_dai_49" model="product.dai"><field name="name">Llaves: 5%</field><field name="porcentaje">0</field></record>
+    <record id="product_dai_50" model="product.dai"><field name="name">Luces Navideñas: 15%</field><field name="porcentaje">15</field></record>
+    <record id="product_dai_51" model="product.dai"><field name="name">Mascarillas: 15%</field><field name="porcentaje">15</field></record>
+    <record id="product_dai_52" model="product.dai"><field name="name">Material Impreso: 15%</field><field name="porcentaje">15</field></record>
+    <record id="product_dai_53" model="product.dai"><field name="name">Material Promocional: 15%</field><field name="porcentaje">15</field></record>
+    <record id="product_dai_54" model="product.dai"><field name="name">Medicamentos: 15%</field><field name="porcentaje">15</field></record>
+    <record id="product_dai_55" model="product.dai"><field name="name">MP3 (iPod): 15%</field><field name="porcentaje">15</field></record>
+    <record id="product_dai_56" model="product.dai"><field name="name">Muebles de Casa: 15%</field><field name="porcentaje">15</field></record>
+    <record id="product_dai_57" model="product.dai"><field name="name">Partes de Bicicleta: 10%</field><field name="porcentaje">10</field></record>
+    <record id="product_dai_58" model="product.dai"><field name="name">Partes Industriales: 10%</field><field name="porcentaje">10</field></record>
+    <record id="product_dai_59" model="product.dai"><field name="name">Poster: 15%</field><field name="porcentaje">15</field></record>
+    <record id="product_dai_60" model="product.dai"><field name="name">Radio de Carro: 15%</field><field name="porcentaje">15</field></record>
+    <record id="product_dai_61" model="product.dai"><field name="name">Reloj de Pulsera/Pared: 15%</field><field name="porcentaje">15</field></record>
+    <record id="product_dai_62" model="product.dai"><field name="name">Repuestos de Carro: 10%</field><field name="porcentaje">10</field></record>
+    <record id="product_dai_63" model="product.dai"><field name="name">Repuestos de Helicoptero: 0%</field><field name="porcentaje">0</field></record>
+    <record id="product_dai_64" model="product.dai"><field name="name">Repuestos de Motor de Carro: 0%</field><field name="porcentaje">0</field></record>
+    <record id="product_dai_65" model="product.dai"><field name="name">Repuestos Electronicos: 0%</field><field name="porcentaje">0</field></record>
+    <record id="product_dai_66" model="product.dai"><field name="name">Ropa: 15%</field><field name="porcentaje">15</field></record>
+    <record id="product_dai_67" model="product.dai"><field name="name">Scanner: 0%</field><field name="porcentaje">0</field></record>
+    <record id="product_dai_68" model="product.dai"><field name="name">Software de PC: 0%</field><field name="porcentaje">0</field></record>
+    <record id="product_dai_69" model="product.dai"><field name="name">Tablets (iPad): 0%</field><field name="porcentaje">0</field></record>
+    <record id="product_dai_70" model="product.dai"><field name="name">Tarjetas de Invitaciones: 15%</field><field name="porcentaje">15</field></record>
+    <record id="product_dai_71" model="product.dai"><field name="name">Videocamara: 0%</field><field name="porcentaje">0</field></record>
+    <record id="product_dai_72" model="product.dai"><field name="name">Videocintas: 15% +3% IPSA</field><field name="porcentaje">18</field></record>
+    <record id="product_dai_73" model="product.dai"><field name="name">Videojuegos CD/DVD/BlueRay" 0% +3% IPSA</field><field name="porcentaje">0</field></record>
+    <record id="product_dai_74" model="product.dai"><field name="name">Videojuegos Cassette: 15% +3% IPSA</field><field name="porcentaje">18</field></record>
+    <record id="product_dai_75" model="product.dai"><field name="name">Zapatos: 15%</field><field name="porcentaje">15</field></record>
+  </data>
+</odoo>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="importaciones_report_view" model="ir.ui.view">
+            <field name="name">Importaciones</field>
+            <field name="model">l10n_gt_sat.librofiscal.report</field>
+            <field name="arch" type="xml">
+                <form string="Report Options">
+                    <field name="generar_por" widget="radio"/>
+                    <group>
+                        <group>
+                            <field name="fecha_inicio" attrs="{'invisible':[('generar_por', '!=', 'fecha')]}"/>
+                        </group>
+                        <group>
+                            <field name="fecha_fin" attrs="{'invisible':[('generar_por', '!=', 'fecha')]}"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="picking_ids" widget="many2many_tags" options="{'no_create': True}" attrs="{'invisible':[('generar_por', '!=', 'picking')]}"/>
+                    </group>
+
+
+                    <footer>
+                        <button name="export_invetory_xls" type="object" default_focus="1" string="Export Excel" class="oe_highlight" context="{'xls_export':1}" icon="fa-download"/>
+                        <button string="Cancel" class="btn btn-secondary" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_importaciones_menu" model="ir.actions.act_window">
+            <field name="name">Importaciones</field>
+            <field name="res_model">l10n_gt_sat.librofiscal.report</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="importaciones_report_view"/>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="menu_account_importaciones_menu_list" 
+        name="Importaciones"
+        action="action_importaciones_menu" 
+        parent="purchase.purchase_report"/>
+    </data>
+</odoo>

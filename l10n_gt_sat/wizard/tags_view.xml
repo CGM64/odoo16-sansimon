@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+
+    <record id="stock_tag_tree_view" model="ir.ui.view">
+            <field name="name">stock.tag.tree</field>
+            <field name="model">product.tag</field>
+            <field name="arch" type="xml">
+                <tree string="Etiquetas" editable="bottom">
+                    <field name="name"/>
+                    <field name="color" groups="base.group_no_one"/>
+                </tree>
+            </field>
+    </record>
+
+    <record id="stock_tag_action" model="ir.actions.act_window">
+        <field name="name">Etiquetas</field>
+        <field name="res_model">product.tag</field>
+        <field name="view_id" ref="stock_tag_tree_view"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crea nuevas etiquetas.
+            </p><p>
+                Cree etiquetas que se adapten a sus necesidades.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_tag_productos_menu_list"
+                name="Etiquetas"
+                action="stock_tag_action"
+                parent="stock.menu_product_in_config_stock"
+                groups="base.group_user"/>
+</data>
+</odoo>

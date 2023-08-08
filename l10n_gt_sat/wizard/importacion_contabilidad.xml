@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="l10n_gt_sat_analisis_importacion_contabilidad_view" model="ir.ui.view">
+            <field name="name">Analisis de Importaciones y Contabilidad</field>
+            <field name="model">l10n_gt_sat.importacion.contabilidad</field>
+            <field name="arch" type="xml">
+                <form string="Opciones">
+                    <group>
+                        <field name="fecha_inicio"/>
+                        <field name="fecha_fin"/>
+                    </group>
+                    <footer>
+                        <button name="export_xls" type="object" default_focus="1" string="Excel" class="oe_highlight" context="{'xls_export':1}" icon="fa-download" />
+                        <button string="Cancel" class="btn btn-secondary" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!--Accion  -->
+        <record id="action_analisis_importacion_contabilidad_menu" model="ir.actions.act_window">
+            <field name="name">Analisis de Importaciones y Contabilidad</field>
+            <field name="res_model">l10n_gt_sat.importacion.contabilidad</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="l10n_gt_sat_analisis_importacion_contabilidad_view" />
+            <field name="target">new</field>
+        </record>
+
+        <!-- Opción en menú -->
+        <menuitem id="menu_analisis_importacion_contabilidad_menu_list" name="Analisis de Importaciones" action="action_analisis_importacion_contabilidad_menu" parent="stock.menu_warehouse_report" />
+    </data>
+
+    <report
+        id="report_analisis_importacion_contabilidad_report_xls"
+        model="report.l10n_gt_sat.analisis_importacion_contabilidad_report_xls"
+        string="Analisis de Importaciones y Contabilidad"
+        report_type="xlsx"
+        name="l10n_gt_sat.analisis_importacion_contabilidad_report_xls"
+        file="AnalisisContable"
+        attachment_use="False"/>
+</odoo>

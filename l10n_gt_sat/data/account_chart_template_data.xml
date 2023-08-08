@@ -1,0 +1,812 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <!-- 4. Exento IVA Compras (GMGT) -->
+
+        <record id="plantilla_exento_iva_compras" model="account.tax.template">
+            <field name="chart_template_id" ref="l10n_gt.cuentas_plantilla"/>
+            <field name="name">Exento IVA Compras</field>
+            <field name="description">Exento IVA Compras</field>
+            <field name="amount" eval="0"/>
+            <field name="amount_type">percent</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="price_include" eval="True"/>
+            <field name="tax_group_id" ref="l10n_gt.tax_group_iva_12"/>
+            <field name="invoice_repartition_line_ids" eval="[(5,0,0),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'base',
+                }),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'tax',
+                    'account_id': ref('l10n_gt.cta110301'),
+                }),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'base',
+                }),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'tax',
+                    'account_id': ref('l10n_gt.cta110301'),
+                }),
+            ]"/>
+        </record>
+
+        <!-- 5. Impuesto IDP Gas (GMGT) -->
+
+        <record id="plantilla_impuesto_idp_gas" model="account.tax.template">
+            <field name="chart_template_id" ref="l10n_gt.cuentas_plantilla"/>
+            <field name="name">Impuesto IDP Gas</field>
+            <field name="description">Impuesto IDP Gas</field>
+            <field name="amount" eval="0"/>
+            <field name="amount_type">code</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="price_include" eval="True"/>
+            <field name="tax_group_id" ref="l10n_gt.tax_group_iva_12"/>
+            <field name="invoice_repartition_line_ids" eval="[(5,0,0),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'base',
+                }),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'base',
+                }),
+            ]"/>
+            <field name="python_compute">result = (0.5 * quantity)</field>
+            <field name="python_applicable">result = True</field>
+        </record>
+
+        <!-- 6. Impuesto IDP Diesel (GMGT) -->
+
+        <record id="plantilla_impuesto_idp_diesel" model="account.tax.template">
+            <field name="chart_template_id" ref="l10n_gt.cuentas_plantilla"/>
+            <field name="name">Impuesto IDP Diesel</field>
+            <field name="description">Impuesto IDP Diesel</field>
+            <field name="amount" eval="0"/>
+            <field name="amount_type">code</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="price_include" eval="True"/>
+            <field name="tax_group_id" ref="l10n_gt.tax_group_iva_12"/>
+            <field name="invoice_repartition_line_ids" eval="[(5,0,0),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'base',
+                }),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'base',
+                }),
+            ]"/>
+            <field name="python_compute">result = (1.7 * quantity)</field>
+            <field name="python_applicable">result = True</field>
+        </record>
+
+        <!-- 7. Impuesto IDP Regular (GMGT) -->
+
+        <record id="plantilla_Impuesto_idp_regular" model="account.tax.template">
+            <field name="chart_template_id" ref="l10n_gt.cuentas_plantilla"/>
+            <field name="name">Impuesto IDP Regular</field>
+            <field name="description">Impuesto IDP Regular</field>
+            <field name="amount" eval="0"/>
+            <field name="amount_type">code</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="price_include" eval="True"/>
+            <field name="tax_group_id" ref="l10n_gt.tax_group_iva_12"/>
+            <field name="invoice_repartition_line_ids" eval="[(5,0,0),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'base',
+                }),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'base',
+                }),
+            ]"/>
+            <field name="python_compute">result = (4.6 * quantity)</field>
+            <field name="python_applicable">result = True</field>
+        </record>
+
+        <!-- 8. Impuesto IDP Super (GMGT) -->
+
+        <record id="plantilla_impuesto_idp_super" model="account.tax.template">
+            <field name="chart_template_id" ref="l10n_gt.cuentas_plantilla"/>
+            <field name="name">Impuesto IDP Super</field>
+            <field name="description">Impuesto IDP Super</field>
+            <field name="amount" eval="0"/>
+            <field name="amount_type">code</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="price_include" eval="True"/>
+            <field name="tax_group_id" ref="l10n_gt.tax_group_iva_12"/>
+            <field name="invoice_repartition_line_ids" eval="[(5,0,0),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'base',
+                }),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'base',
+                }),
+            ]"/>
+            <field name="python_compute">result = (4.7 * quantity)</field>
+            <field name="python_applicable">result = True</field>
+        </record>
+
+        <!-- 9. Impuesto Tasa Municipal Energía (GMGT) -->
+
+        <record id="plantilla_impuesto_tasa_municipal_energia" model="account.tax.template">
+            <field name="chart_template_id" ref="l10n_gt.cuentas_plantilla"/>
+            <field name="name">Impuesto Tasa Municipal Energía</field>
+            <field name="description">Impuesto Tasa Municipal Energía</field>
+            <field name="amount" eval="0"/>
+            <field name="amount_type">code</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="price_include" eval="True"/>
+            <field name="tax_group_id" ref="l10n_gt.tax_group_iva_12"/>
+            <field name="invoice_repartition_line_ids" eval="[(5,0,0),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'base',
+                }),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'tax',
+                    'account_id': ref('l10n_gt.cta110301'),
+                }),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'base',
+                }),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'tax',
+                    'account_id': ref('l10n_gt.cta110301'),
+                }),
+            ]"/>
+            <field name="python_compute">result = (price_unit * 0.13)</field>
+            <field name="python_applicable">result = True</field>
+        </record>
+
+        <!-- 10. IVA por Cobrar Gas (GMGT) -->
+
+        <record id="plantilla_iva_por_cobrar_gas" model="account.tax.template">
+            <field name="chart_template_id" ref="l10n_gt.cuentas_plantilla"/>
+            <field name="name">IVA por Cobrar Gas</field>
+            <field name="description">IVA por Cobrar Gas</field>
+            <field name="amount" eval="0"/>
+            <field name="amount_type">code</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="price_include" eval="True"/>
+            <field name="tax_group_id" ref="l10n_gt.tax_group_iva_12"/>
+            <field name="invoice_repartition_line_ids" eval="[(5,0,0),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'base',
+                }),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'tax',
+                    'account_id': ref('l10n_gt.cta110301'),
+                }),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'base',
+                }),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'tax',
+                    'account_id': ref('l10n_gt.cta110301'),
+                }),
+            ]"/>
+            <field name="python_compute">result = ((price_unit * quantity) - (0.5 * quantity))/1.12*0.12</field>
+            <field name="python_applicable">result = True</field>
+        </record>
+
+        <!-- 11. IVA por Cobrar Diesel (GMGT) -->
+
+        <record id="plantilla_iva_por_cobrar_diesel" model="account.tax.template">
+            <field name="chart_template_id" ref="l10n_gt.cuentas_plantilla"/>
+            <field name="name">IVA por Cobrar Diesel</field>
+            <field name="description">IVA por Cobrar Diesel</field>
+            <field name="amount" eval="0"/>
+            <field name="amount_type">code</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="price_include" eval="True"/>
+            <field name="tax_group_id" ref="l10n_gt.tax_group_iva_12"/>
+            <field name="invoice_repartition_line_ids" eval="[(5,0,0),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'base',
+                }),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'tax',
+                    'account_id': ref('l10n_gt.cta110301'),
+                }),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'base',
+                }),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'tax',
+                    'account_id': ref('l10n_gt.cta110301'),
+                }),
+            ]"/>
+            <field name="python_compute">result = ((price_unit * quantity) - (1.7 * quantity))/1.12*0.12</field>
+            <field name="python_applicable">result = True</field>
+        </record>
+
+        <!-- 12. IVA por Cobrar Energía Eléctrica (GMGT) -->
+
+        <record id="plantilla_iva_por_cobrar_energia_electrica" model="account.tax.template">
+            <field name="chart_template_id" ref="l10n_gt.cuentas_plantilla"/>
+            <field name="name">IVA por Cobrar Energía Eléctrica</field>
+            <field name="description">IVA por Cobrar Energía Eléctrica</field>
+            <field name="amount" eval="0"/>
+            <field name="amount_type">code</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="price_include" eval="True"/>
+            <field name="tax_group_id" ref="l10n_gt.tax_group_iva_12"/>
+            <field name="invoice_repartition_line_ids" eval="[(5,0,0),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'base',
+                }),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'tax',
+                    'account_id': ref('l10n_gt.cta110301'),
+                }),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'base',
+                }),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'tax',
+                    'account_id': ref('l10n_gt.cta110301'),
+                }),
+            ]"/>
+            <field name="python_compute">result = (price_unit - price_unit * 0.13)-((price_unit - price_unit * 0.13)/1.12)</field>
+            <field name="python_applicable">result = True</field>
+        </record>
+
+        <!-- 13. IVA por Cobrar Gasolina Regular -->
+
+        <record id="plantilla_iva_por_cobrar_gasolina_regular" model="account.tax.template">
+            <field name="chart_template_id" ref="l10n_gt.cuentas_plantilla"/>
+            <field name="name">IVA por Cobrar Gasolina Regular</field>
+            <field name="description">IVA por Cobrar Gasolina Regular</field>
+            <field name="amount" eval="0"/>
+            <field name="amount_type">code</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="price_include" eval="True"/>
+            <field name="tax_group_id" ref="l10n_gt.tax_group_iva_12"/>
+            <field name="invoice_repartition_line_ids" eval="[(5,0,0),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'base',
+                }),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'tax',
+                    'account_id': ref('l10n_gt.cta110301'),
+                }),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'base',
+                }),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'tax',
+                    'account_id': ref('l10n_gt.cta110301'),
+                }),
+            ]"/>
+            <field name="python_compute">result = ((price_unit * quantity) - (4.6 * quantity))/1.12*0.12</field>
+            <field name="python_applicable">result = True</field>
+        </record>
+
+        <!-- 14. IVA por Cobrar Gasolina Super -->
+
+        <record id="plantilla_impuesto_idp_gas" model="account.tax.template">
+            <field name="chart_template_id" ref="l10n_gt.cuentas_plantilla"/>
+            <field name="name">IVA por Cobrar Gasolina Super</field>
+            <field name="description">IVA por Cobrar Gasolina Super</field>
+            <field name="amount" eval="0"/>
+            <field name="amount_type">code</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="price_include" eval="True"/>
+            <field name="tax_group_id" ref="l10n_gt.tax_group_iva_12"/>
+            <field name="invoice_repartition_line_ids" eval="[(5,0,0),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'base',
+                }),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'tax',
+                    'account_id': ref('l10n_gt.cta110301'),
+                }),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'base',
+                }),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'tax',
+                    'account_id': ref('l10n_gt.cta110301'),
+                }),
+            ]"/>
+            <field name="python_compute">result = ((price_unit * quantity) - (4.7 * quantity))/1.12*0.12</field>
+            <field name="python_applicable">result = True</field>
+        </record>
+
+        <!-- 15. Ret. ISR Loc 5% -->
+
+        <record id="plantilla_ret_isr_loc_5" model="account.tax.template">
+            <field name="chart_template_id" ref="l10n_gt.cuentas_plantilla"/>
+            <field name="name">Ret. ISR Loc 5%</field>
+            <field name="description">Ret. ISR Loc 5%</field>
+            <field name="amount" eval="0"/>
+            <field name="amount_type">code</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="price_include" eval="False"/>
+            <field name="tax_group_id" ref="l10n_gt.tax_group_iva_12"/>
+            <field name="invoice_repartition_line_ids" eval="[(5,0,0),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'base',
+                }),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'tax',
+                    'account_id': ref('l10n_gt.cta110301'),
+                }),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'base',
+                }),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'tax',
+                    'account_id': ref('l10n_gt.cta110301'),
+                }),
+            ]"/>
+            <field name="python_compute">result = -price_unit / 1.12 * quantity * 0.05</field>
+            <field name="python_applicable">result = True</field>
+        </record>
+
+        <!-- 16. Ret. ISR Dividendos 5%  -->
+
+        <record id="plantilla_ret_isr_dividendos_5" model="account.tax.template">
+            <field name="chart_template_id" ref="l10n_gt.cuentas_plantilla"/>
+            <field name="name">Ret. ISR Dividendos 5%</field>
+            <field name="description">Ret. ISR Dividendos 5%</field>
+            <field name="amount" eval="0"/>
+            <field name="amount_type">code</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="price_include" eval="False"/>
+            <field name="tax_group_id" ref="l10n_gt.tax_group_iva_12"/>
+            <field name="invoice_repartition_line_ids" eval="[(5,0,0),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'base',
+                }),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'tax',
+                    'account_id': ref('l10n_gt.cta110301'),
+                }),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'base',
+                }),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'tax',
+                    'account_id': ref('l10n_gt.cta110301'),
+                }),
+            ]"/>
+            <field name="python_compute">result = -price_unit * quantity * 0.05</field>
+            <field name="python_applicable">result = True</field>
+        </record>
+
+        <!-- 17. Ret. IVA por Cobrar -->
+
+        <record id="plantilla_ret_iva_por_cobrar" model="account.tax.template">
+            <field name="chart_template_id" ref="l10n_gt.cuentas_plantilla"/>
+            <field name="name">Ret. IVA por Cobrar</field>
+            <field name="description">Ret. IVA por Cobrar</field>
+            <field name="amount" eval="0"/>
+            <field name="amount_type">code</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="price_include" eval="False"/>
+            <field name="tax_group_id" ref="l10n_gt.tax_group_iva_12"/>
+            <field name="invoice_repartition_line_ids" eval="[(5,0,0),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'base',
+                }),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'tax',
+                    'account_id': ref('l10n_gt.cta110301'),
+                }),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'base',
+                }),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'tax',
+                    'account_id': ref('l10n_gt.cta110301'),
+                }),
+            ]"/>
+            <field name="python_compute">if base_amount >= 2500:
+    result = ((price_unit * quantity) - base_amount) * -0.65
+else:
+    result = 0</field>
+            <field name="python_applicable">result = True</field>
+        </record>
+
+        <!-- 18. Ret. IVA por Cobrar Peq. Contrib. -->
+
+        <record id="plantilla_Ret_iva_por_cobrar_peq_contrib" model="account.tax.template">
+            <field name="chart_template_id" ref="l10n_gt.cuentas_plantilla"/>
+            <field name="name">Ret. IVA por Cobrar Peq. Contrib.</field>
+            <field name="description">Ret. IVA por Cobrar Peq. Contrib.</field>
+            <field name="amount" eval="0"/>
+            <field name="amount_type">code</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="price_include" eval="False"/>
+            <field name="tax_group_id" ref="l10n_gt.tax_group_iva_12"/>
+            <field name="invoice_repartition_line_ids" eval="[(5,0,0),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'base',
+                }),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'tax',
+                    'account_id': ref('l10n_gt.cta110301'),
+                }),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'base',
+                }),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'tax',
+                    'account_id': ref('l10n_gt.cta110301'),
+                }),
+            ]"/>
+            <field name="python_compute">if base_amount >= 2500.01:
+    result = base_amount*-0.05
+else:
+    result = 0</field>
+            <field name="python_applicable">result = True</field>
+        </record>
+
+        <!-- 19. IVA por Pagar Anticipo -->
+
+        <record id="plantilla_iva_por_pagar_anticipo" model="account.tax.template">
+            <field name="chart_template_id" ref="l10n_gt.cuentas_plantilla"/>
+            <field name="name">IVA por Pagar Anticipo</field>
+            <field name="description">IVA por Pagar Anticipo</field>
+            <field name="amount" eval="0"/>
+            <field name="amount_type">code</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="price_include" eval="False"/>
+            <field name="tax_group_id" ref="l10n_gt.tax_group_iva_12"/>
+            <field name="invoice_repartition_line_ids" eval="[(5,0,0),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'base',
+                }),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'tax',
+                    'account_id': ref('l10n_gt.cta110301'),
+                }),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'base',
+                }),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'tax',
+                    'account_id': ref('l10n_gt.cta110301'),
+                }),
+            ]"/>
+            <field name="python_compute">result = price_unit * 0.10</field>
+            <field name="python_applicable">result = True</field>
+        </record>
+
+        <!-- 20. Ret. ISR Com 5% -->
+
+        <record id="plantilla_ret_isr_com_5" model="account.tax.template">
+            <field name="chart_template_id" ref="l10n_gt.cuentas_plantilla"/>
+            <field name="name">Ret. ISR Com 5%</field>
+            <field name="description">Ret. ISR Com 5%</field>
+            <field name="amount" eval="0"/>
+            <field name="amount_type">code</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="price_include" eval="True"/>
+            <field name="tax_group_id" ref="l10n_gt.tax_group_iva_12"/>
+            <field name="invoice_repartition_line_ids" eval="[(5,0,0),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'base',
+                }),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'tax',
+                    'account_id': ref('l10n_gt.cta110301'),
+                }),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'base',
+                }),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'tax',
+                    'account_id': ref('l10n_gt.cta110301'),
+                }),
+            ]"/>
+            <field name="python_compute">result = -((price_unit * quantity / 0.95) - (price_unit * quantity))</field>
+            <field name="python_applicable">result = True</field>
+        </record>
+
+        <!-- 21. Ret. ISR Imágenes 3% -->
+
+        <record id="plantilla_ret_isr_imagenes_3" model="account.tax.template">
+            <field name="chart_template_id" ref="l10n_gt.cuentas_plantilla"/>
+            <field name="name">Ret. ISR Imágenes 3%</field>
+            <field name="description">Ret. ISR Imágenes 3%</field>
+            <field name="amount" eval="0"/>
+            <field name="amount_type">code</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="price_include" eval="True"/>
+            <field name="tax_group_id" ref="l10n_gt.tax_group_iva_12"/>
+            <field name="invoice_repartition_line_ids" eval="[(5,0,0),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'base',
+                }),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'tax',
+                    'account_id': ref('l10n_gt.cta110301'),
+                }),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'base',
+                }),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'tax',
+                    'account_id': ref('l10n_gt.cta110301'),
+                }),
+            ]"/>
+            <field name="python_compute">result = -((price_unit * quantity / 0.97) - (price_unit * quantity))</field>
+            <field name="python_applicable">result = True</field>
+        </record>
+
+        <!-- 22. Ret. ISR Hon-Extranjero 15% -->
+
+        <record id="plantilla_ret_isr_hon_extranjero_15" model="account.tax.template">
+            <field name="chart_template_id" ref="l10n_gt.cuentas_plantilla"/>
+            <field name="name">Ret. ISR Hon-Extranjero 15%</field>
+            <field name="description">Ret. ISR Hon-Extranjero 15%</field>
+            <field name="amount" eval="0"/>
+            <field name="amount_type">code</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="price_include" eval="False"/>
+            <field name="tax_group_id" ref="l10n_gt.tax_group_iva_12"/>
+            <field name="invoice_repartition_line_ids" eval="[(5,0,0),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'base',
+                }),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'tax',
+                    'account_id': ref('l10n_gt.cta110301'),
+                }),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'base',
+                }),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'tax',
+                    'account_id': ref('l10n_gt.cta110301'),
+                }),
+            ]"/>
+            <field name="python_compute">result = -price_unit * quantity * 0.15</field>
+            <field name="python_applicable">result = True</field>
+        </record>
+
+        <!-- 23. Ret. ISR Otra Renta 25% -->
+
+        <record id="plantilla_impuesto_idp_gas" model="account.tax.template">
+            <field name="chart_template_id" ref="l10n_gt.cuentas_plantilla"/>
+            <field name="name">Ret. ISR Otra Renta 25%</field>
+            <field name="description">Ret. ISR Otra Renta 25%</field>
+            <field name="amount" eval="0"/>
+            <field name="amount_type">code</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="price_include" eval="False"/>
+            <field name="tax_group_id" ref="l10n_gt.tax_group_iva_12"/>
+            <field name="invoice_repartition_line_ids" eval="[(5,0,0),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'base',
+                }),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'tax',
+                    'account_id': ref('l10n_gt.cta110301'),
+                }),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'base',
+                }),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'tax',
+                    'account_id': ref('l10n_gt.cta110301'),
+                }),
+            ]"/>
+            <field name="python_compute">result = -price_unit * quantity * 0.25</field>
+            <field name="python_applicable">result = True</field>
+        </record>
+
+        <!-- 24. Ret. ISR Interes 10% -->
+
+        <record id="plantilla_Ret_isr_interes_10" model="account.tax.template">
+            <field name="chart_template_id" ref="l10n_gt.cuentas_plantilla"/>
+            <field name="name">Ret. ISR Interes 10%</field>
+            <field name="description">Ret. ISR Interes 10%</field>
+            <field name="amount" eval="0"/>
+            <field name="amount_type">code</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="price_include" eval="False"/>
+            <field name="tax_group_id" ref="l10n_gt.tax_group_iva_12"/>
+            <field name="invoice_repartition_line_ids" eval="[(5,0,0),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'base',
+                }),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'tax',
+                    'account_id': ref('l10n_gt.cta110301'),
+                }),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'base',
+                }),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'tax',
+                    'account_id': ref('l10n_gt.cta110301'),
+                }),
+            ]"/>
+            <field name="python_compute">result = -price_unit * quantity * 0.10</field>
+            <field name="python_applicable">result = True</field>
+        </record>
+
+        <!-- 25. Ret. IVA Fac-Especial 12%  -->
+
+        <record id="plantilla_impuesto_idp_gas" model="account.tax.template">
+            <field name="chart_template_id" ref="l10n_gt.cuentas_plantilla"/>
+            <field name="name">Ret. IVA Fac-Especial 12%</field>
+            <field name="description">Ret. IVA Fac-Especial 12%</field>
+            <field name="amount" eval="0"/>
+            <field name="amount_type">code</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="price_include" eval="False"/>
+            <field name="tax_group_id" ref="l10n_gt.tax_group_iva_12"/>
+            <field name="invoice_repartition_line_ids" eval="[(5,0,0),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'base',
+                }),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'tax',
+                    'account_id': ref('l10n_gt.cta110301'),
+                }),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'base',
+                }),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'tax',
+                    'account_id': ref('l10n_gt.cta110301'),
+                }),
+            ]"/>
+            <field name="python_compute">result = -price_unit * quantity * 0.12</field>
+            <field name="python_applicable">result = True</field>
+        </record>
+
+        <!-- 26. Impuesto IDP Gas (GMGT) -->
+
+        <record id="plantilla_impuesto_importacion_in_ca" model="account.tax.template">
+            <field name="chart_template_id" ref="l10n_gt.cuentas_plantilla"/>
+            <field name="name">Impuesto por Cobrar Importaciones</field>
+            <field name="description">Impuesto por Cobrar Importaciones</field>
+            <field name="amount" eval="0"/>
+            <field name="amount_type">percent</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="price_include" eval="True"/>
+            <field name="tax_group_id" ref="l10n_gt.tax_group_iva_12"/>
+            <field name="invoice_repartition_line_ids" eval="[(5,0,0),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'base',
+                }),
+            ]"/>
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+                (0,0, {
+                    'factor_percent': 100,
+                    'repartition_type': 'base',
+                }),
+            ]"/>
+        </record>
+
+        <function model="account.chart.template" name="try_loading">
+            <value eval="[ref('l10n_gt.cuentas_plantilla')]"/>
+        </function>
+    </data>
+</odoo>

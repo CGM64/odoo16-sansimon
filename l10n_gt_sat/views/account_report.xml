@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+      <record id="l10n_gt_sat_paper_libro_fiscal" model="report.paperformat">
+          <field name="name">l10n_gt_sat Papel Libros Fiscales</field>
+          <field name="default" eval="True" />
+          <field name="format">Letter</field>
+          <field name="page_height">0</field>
+          <field name="page_width">0</field>
+          <field name="orientation">Portrait</field>
+          <field name="margin_top">1</field>
+          <field name="margin_bottom">25</field>
+          <field name="margin_left">7</field>
+          <field name="margin_right">7</field>
+          <field name="header_line" eval="False" />
+          <field name="header_spacing">35</field>
+          <field name="dpi">90</field>
+      </record>
+
+      <record id="l10n_gt_sat_paper_cheque_media" model="report.paperformat">
+          <field name="name">Papel Cheque Media</field>
+          <field name="default" eval="False" />
+          <field name="format">custom</field>
+          <field name="page_height">140</field>
+          <field name="page_width">215</field>
+          <field name="orientation">Portrait</field>
+          <field name="margin_top">10</field>
+          <field name="margin_bottom">10</field>
+          <field name="margin_left">20</field>
+          <field name="margin_right">12</field>
+          <field name="header_line" eval="False" />
+          <field name="header_spacing">35</field>
+          <field name="dpi">90</field>
+      </record>
+
+      <record id="l10n_gt_sat_paper_cheque_carta" model="report.paperformat">
+          <field name="name">Papel Cheque Carta</field>
+          <field name="default" eval="False" />
+          <field name="format">custom</field>
+          <field name="page_height">186</field>
+          <field name="page_width">215</field>
+          <field name="orientation">Portrait</field>
+          <field name="margin_top">10</field>
+          <field name="margin_bottom">10</field>
+          <field name="margin_left">20</field>
+          <field name="margin_right">12</field>
+          <field name="header_line" eval="False" />
+          <field name="header_spacing">35</field>
+          <field name="dpi">90</field>
+      </record>
+
+      <record id="l10n_gt_sat_papel_cheque" model="report.paperformat">
+        <field name="name">Papel Cheque</field>
+        <field name="default" eval="True"/>
+        <field name="format">custom</field>
+        <field name="page_height">70</field>
+        <field name="page_width">180</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">10</field>
+        <field name="margin_bottom">10</field>
+        <field name="margin_left">0</field>
+        <field name="margin_right">5</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">11</field>
+        <field name="dpi">90</field>
+      </record>
+
+      <record id="bav_voucher" model="report.paperformat">
+      <field name="name">Voucher Paper Format</field>
+      <field name="default" eval="True"/>
+      <field name="format">custom</field>
+      <field name="page_height">160</field>
+      <field name="page_width">216</field>
+      <field name="orientation">Landscape</field>
+      <field name="margin_top">10</field>
+      <field name="margin_bottom">10</field>
+      <field name="margin_left">2</field>
+      <field name="margin_right">2</field>
+      <field name="header_line" eval="False"/>
+      <field name="header_spacing">11</field>
+      <field name="dpi">90</field>
+      </record>
+
+      <!-- Formato para imprimir los cheques utilizan chque y baucher a media carta -->
+      <report
+          id="report_payment_receipt_media"
+          model="account.payment"
+          string="Formato de Cheque, Media Carta"
+          report_type="qweb-pdf"
+          name="l10n_gt_sat.report_arml_print_check_top_media"
+          file="l10n_gt_sat.report_arml_print_check_top_media"
+          menu="True"
+          paperformat="l10n_gt_sat_paper_cheque_media"
+          attachment="(object.state == 'posted') and ((object.name or 'CH').replace('/','_')+'.pdf')"
+      />
+
+      <report
+          id="report_payment_papel_cheque"
+          model="account.payment"
+          string="Formato de Cheque"
+          report_type="qweb-pdf"
+          name="l10n_gt_sat.report_payment_receipt_check"
+          file="l10n_gt_sat.report_payment_receipt_check"
+          menu="True"
+          paperformat="l10n_gt_sat_papel_cheque"
+          attachment="(object.state == 'posted') and ((object.name or 'CH').replace('/','_')+'.pdf')"
+      />
+
+      <report
+          id="report_payment_papel_cheque_voucher"
+          model="account.payment"
+          string="Formato de Cheque Voucher"
+          report_type="qweb-pdf"
+          name="l10n_gt_sat.report_payment_receipt_check_voucher"
+          file="l10n_gt_sat.report_payment_receipt_check_voucher"
+          menu="True"
+          paperformat="bav_voucher"
+          attachment="(object.state == 'posted') and ((object.name or 'CH').replace('/','_')+'.pdf')"
+      />
+
+      <!-- Formato para imprimir los cheques utilizando cheque y voucher carta -->
+      <report
+          id="report_payment_receipt_carta"
+          model="account.payment"
+          string="Formato de Cheque, Carta"
+          report_type="qweb-pdf"
+          name="l10n_gt_sat.report_arml_print_check_top_carta"
+          file="l10n_gt_sat.report_arml_print_check_top_carta"
+          menu="True"
+          paperformat="l10n_gt_sat_paper_cheque_carta"
+          attachment="(object.state == 'posted') and ((object.name or 'CH').replace('/','_')+'.pdf')"
+      />
+
+        <report
+            id="action_report_librofiscal"
+            model="l10n_gt_sat.librofiscal.report"
+            string="Libros Fiscales"
+            report_type="qweb-pdf"
+            name="l10n_gt_sat.librofiscal"
+            file="l10n_gt_sat.librofiscal"
+            paperformat="l10n_gt_sat_paper_libro_fiscal"
+          />
+
+          <report
+            id="account_librofiscal_report_xls"
+            model="report.l10n_gt_sat.account_librofiscal_report_xls"
+            string="Libro Fiscal XLS"
+            report_type="xlsx"
+            name="l10n_gt_sat.account_librofiscal_report_xls"
+            file="Libro_Fiscal"
+            attachment_use="False"
+        />
+
+        <!-- REPORTE DE IMPORTACIONES -->
+          <report
+            id="account_inventario_report_xls"
+            model="report.l10n_gt_sat.account_inventario_report_xls"
+            string="Libro Inventario XLS"
+            report_type="xlsx"
+            name="l10n_gt_sat.account_inventario_report_xls"
+            file="Libro_Inventario"
+            attachment_use="False"
+        />
+
+
+
+
+        <report
+          id="libro_contable_diario_xlsx"
+          model="report.l10n_gt_sat.libro_contable_diario_xlsx"
+          string="Libro Contable Diario XLS"
+          report_type="xlsx"
+          name="libro_contable_diario_xlsx"
+          file="Diario"
+          attachment_use="False"
+        />
+
+        <report
+          id="libro_contable_mayor_xlsx"
+          model="report.l10n_gt_sat.libro_contable_mayor_xlsx"
+          string="Libro Contable Mayor XLS"
+          report_type="xlsx"
+          name="libro_contable_mayor_xlsx"
+          file="Mayor"
+          attachment_use="False"
+        />
+    </data>
+</odoo>

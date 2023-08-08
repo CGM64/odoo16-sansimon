@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report
+            string="Prorrateo de Compra"
+            id="action_report_purchase_order"
+            model="purchase.order"
+            report_type="qweb-pdf"
+            name="l10n_gt_sat.report_orden_compra_prorrateo"
+            file="l10n_gt_sat.report_orden_compra_prorrateo"
+            print_report_name="'Prorrateo - %s - %s' % (object.partner_id.name or '', object.name)"
+        />
+
+        <template id="report_orden_compra_prorrateo">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+                            <div class="row">
+                              <span><strong>Delivery Address:</strong></span>
+                            </div>
+                            <br/>
+                            <h1 t-field="o.name" class="mt0 float-left"/>
+                            <div class="row mt48 mb32">
+                                <div t-if="o.origin" class="col-auto" name="div_origin">
+                                    <strong>Order:</strong>
+                                    <p t-field="o.origin"/>
+                                </div>
+                                <div class="col-auto" name="div_state">
+                                    <strong>Estatus:</strong>
+                                    <p t-field="o.state"/>
+                                </div>
+                                <div class="col-auto" name="div_sched_date">
+                                    <strong>Fecha:</strong>
+                                    <p t-field="o.date_order"/>
+                                </div>
+                            </div>
+                            <!-- <table class="table table-sm" t-if="o.move_line_ids and o.move_ids_without_package"> -->
+                            <table class="table table-sm">
+                              <thead>
+                                  <tr>
+                                      <th>
+                                          <strong>Item</strong>
+                                      </th>
+                                      <th>
+                                          <strong>Codigo</strong>
+                                      </th>
+                                      <th>
+                                          <strong>Producto</strong>
+                                      </th>
+                                      <th>
+                                         <strong>Arancel</strong>
+                                      </th>
+                                      <th>
+                                          <strong>Cantidad</strong>
+                                      </th>
+                                      <th>
+                                          <strong>FOB</strong>
+                                      </th>
+                                      <th>
+                                          <strong>Total FOB</strong>
+                                      </th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <t t-foreach="o.reporte_prorrateo_compra()" t-as="line">
+                                    <tr>
+                                      <td>
+                                        <span t-esc="line['item']"/>
+                                      </td>
+                                      <td>
+                                        <span t-esc="line['codigo']"/>
+                                      </td>
+                                      <td>
+                                        <span t-esc="line['descripcion']"/>
+                                      </td>
+                                      <td class="text-right">
+                                        <t t-if="line['arancel']">
+                                          <span t-esc="line['arancel']"/>
+                                        </t>
+                                      </td>
+                                      <td class="text-center">
+                                        <span t-esc="line['cantidad']"/>
+                                      </td>
+                                      <td class="text-right">
+                                        <span t-esc="line['fob']"/>
+                                      </td>
+                                      <td class="text-right">
+                                        <span t-esc="line['total_fob']"/>
+                                      </td>
+                                    </tr>
+                                  </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+      </data>
+  </odoo>

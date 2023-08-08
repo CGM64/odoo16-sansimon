@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <record id="account_210230" model="account.account.template">
+      <field name="code">2.1.02.30</field>
+      <field name="name">Facturas por Recibir</field>
+      <field ref="account.data_account_type_current_liabilities" name="user_type_id"/>
+      <field name="reconcile" eval="True"/>
+      <field name="chart_template_id" ref="l10n_gt.cuentas_plantilla"/>
+    </record>
+
+    <record id="account_110640" model="account.account.template">
+      <field name="code">1.1.06.40</field>
+      <field name="name">Existencias en Tránsito</field>
+      <field ref="account.data_account_type_current_assets" name="user_type_id"/>
+      <field name="reconcile" eval="True"/>
+      <field name="chart_template_id" ref="l10n_gt.cuentas_plantilla"/>
+    </record>
+
+    <record id="account_110610" model="account.account.template">
+      <field name="code">1.1.06.10</field>
+      <field name="name">Inventario</field>
+        <field ref="account.data_account_type_current_assets" name="user_type_id"/>
+        <field name="reconcile" eval="False"/>
+        <field name="chart_template_id" ref="l10n_gt.cuentas_plantilla"/>
+    </record>
+
+    <record id="l10n_gt.cuentas_plantilla" model="account.chart.template">
+      <field name="property_account_expense_categ_id" ref="account_110640"/>
+      <field name="property_stock_valuation_account_id" ref="account_110610"/>
+      <field name="property_stock_account_input_categ_id" ref="account_110640"/>
+      <field name="property_stock_account_output_categ_id" ref="l10n_gt.cta510101"/>
+    </record>
+
+    <function model="account.chart.template" name="try_loading">
+      <value eval="[ref('l10n_gt.cuentas_plantilla')]"/>
+    </function>
+
+    <record id="action_account_payments_payable_sat" model="ir.actions.act_window">
+          <field name="name">Payments</field>
+          <field name="res_model">account.payment</field>
+          <field name="view_mode">tree,kanban,form,graph</field>
+          <field name="context">{
+              'default_payment_type': 'outbound',
+              'default_partner_type': 'supplier',
+              'search_default_outbound_filter': 1,
+              'res_partner_search_mode': 'supplier',
+          }</field>
+          <field name="view_id" ref="account.view_account_payment_form"/>
+          <field name="help" type="html">
+              <p class="o_view_nocontent_smiling_face">
+                Register a payment
+              </p><p>
+                Payments are used to register liquidity movements. You can process those payments by your own means or by using installed facilities.
+              </p>
+          </field>
+      </record>
+  </data>
+</odoo>

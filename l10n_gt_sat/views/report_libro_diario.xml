@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<report id="action_report_l10n_gt_sat_diario"
+				name="l10n_gt_sat.report_libro_contable_diario"
+				file="l10n_gt_sat.report_libro_contable_diario"
+				model="libro_contable.report"
+				report_type="qweb-pdf"
+				string="Libro Diario"
+				paperformat="base.paperformat_us"
+		 />
+
+		 <report id="action_report_l10n_gt_sat_libro_mayor"
+ 				name="l10n_gt_sat.report_libro_contable_mayor"
+ 				file="l10n_gt_sat.report_libro_contable_mayor"
+ 				model="libro_contable.report"
+ 				report_type="qweb-pdf"
+ 				string="Libro Mayor"
+ 				paperformat="base.paperformat_us"
+ 		 />
+<!--
+		 <report id="libro_contable_mayor_xlsx"
+			 model="report.l10n_gt_sat.libro_contable_mayor_xlsx"
+			 string="Libro Mayor XLSX"
+			 report_type="xlsx"
+			 name="l10n_gt_sat.libro_contable_mayor_xlsx"
+			 file="libro_mayor"
+			 attachment_use="False"
+			 print_report_name = "(object.name+.pdf)"
+		 />
+
+		 <report id="libro_contable_diario_xlsx"
+			 model="report.l10n_gt_sat.libro_contable_diario_xlsx"
+			 string="Libro Diario XLSX"
+			 report_type="xlsx"
+			 name="l10n_gt_sat.libro_contable_diario_xlsx"
+			 file="libro_diario"
+			 attachment_use="False"
+			 print_report_name = "(object.name+.pdf)"
+		 />
+-->
+<!--
+
+		 LIBRO MAYOR
+
+-->
+		 <template id="report_libro_contable_mayor">
+ 			<t t-call="web.html_container">
+ 				<t t-set="data_report_margin_top" t-value="12"/>
+         <t t-set="data_report_header_spacing" t-value="9"/>
+         <t t-set="data_report_dpi" t-value="110"/>
+ 					<!--<t t-call="web.basic_layout">-->
+ 						<t t-call="web.internal_layout">
+						<link href="/l10n_gt_sat/static/src/css/report.css" rel="stylesheet"/>
+ 						<div class="page">
+ 								<p><![CDATA[&nbsp;]]></p>
+                 <h2><span t-esc="res_company.name"/>: Libro Mayor</h2>
+ 						</div>
+						<div class="row mb32">
+								<div class="col-xs-4">
+										<t t-if="data['date_from']"><strong>Date from :</strong> <span t-esc="data['date_from']" t-options='{"widget": "date"}'/><br/></t>
+										<t t-if="data['date_to']"><strong>Date to :</strong> <span t-esc="data['date_to']" t-options='{"widget": "date"}'/></t>
+								</div>
+						</div>
+            <table class="table-condensed sat_table">
+							<t t-foreach="Accounts" t-as="account">
+								<t t-foreach="account['encabezado']" t-as="encabezado">
+									<tr style="font-weight: bold;">
+										<td colspan="2"><span t-esc="encabezado['acode']"/></td>
+										<td><span t-esc="encabezado['aname']"/></td>
+										<td class="text-right"><![CDATA[&nbsp;]]></td>
+										<td class="text-right"><![CDATA[&nbsp;]]></td>
+										<td class="text-right"><![CDATA[&nbsp;]]></td>
+									</tr>
+								</t>
+								<tr style="font-weight: bold;">
+									<td class="sat_td">Fecha</td>
+									<td class="sat_td" colspan="2">Diario</td>
+									<td class="text-right sat_td">Debe</td>
+									<td class="text-right sat_td">Haber</td>
+									<td class="text-right sat_td">Saldo Final</td>
+								</tr>
+									<tr t-foreach="account['detalle']" t-as="line">
+										<td><span t-esc="line['ldate']" t-options='{"widget": "date"}'/></td>
+										<td colspan="2"><span t-esc="line['jname']"/></td>
+										<td class="text-right">
+												<span t-esc="line['debit']" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+										</td>
+										<td class="text-right">
+												<span t-esc="line['credit']" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+										</td>
+										<td class="text-right">
+											<span t-esc="line['balance']" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+										</td>
+									</tr>
+									<t t-foreach="account['encabezado']" t-as="encabezado">
+										<tr style="font-weight: bold;">
+											<td class="sat_td_stotal"><![CDATA[&nbsp;]]></td>
+											<td class="sat_td_stotal" colspan="2">Sub Total</td>
+											<!--<td class="sat_td_stotal"><![CDATA[&nbsp;]]></td>-->
+											<td class="text-right sat_td_stotal"><span t-esc="encabezado['debit']" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+											<td class="text-right sat_td_stotal"><span t-esc="encabezado['credit']" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+											<td class="text-right sat_td_stotal"><span t-esc="encabezado['balance']" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+										</tr>
+									</t>
+									<tr><td colspan="6"><![CDATA[&nbsp;]]></td></tr>
+							</t>
+							<t t-foreach="TotalGeneral" t-as="total">
+								<tr style="font-weight: bold;">
+									<td class="sat_td_total"><![CDATA[&nbsp;]]></td>
+									<td class="sat_td_total">Total</td>
+									<td class="sat_td_total"><![CDATA[&nbsp;]]></td>
+									<td class="text-right sat_td_total"><span t-esc="total['debit']" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+									<td class="text-right sat_td_total"><span t-esc="total['credit']" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+									<td class="text-right sat_td_total"><span t-esc="total['balance']" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+								</tr>
+							</t>
+						</table>
+ 					</t>
+ 			</t>
+ 		</template>
+
+<!--
+
+LIBRO DIARIO
+
+-->
+		<template id="report_libro_contable_diario">
+			<t t-call="web.html_container">
+				<t t-set="data_report_margin_top" t-value="12"/>
+        <t t-set="data_report_header_spacing" t-value="9"/>
+        <t t-set="data_report_dpi" t-value="110"/>
+					<!--<t t-call="web.basic_layout">-->
+						<t t-call="web.internal_layout">
+							<link href="/l10n_gt_sat/static/src/css/report.css" rel="stylesheet"/>
+						<div class="page">
+								<p><![CDATA[&nbsp;]]></p>
+                <h2><span t-esc="res_company.name"/>: Libro Diario</h2>
+						</div>
+						<div class="row mb32">
+								<div class="col-xs-4">
+										<t t-if="data['date_from']"><strong>Date from :</strong> <span t-esc="data['date_from']" t-options='{"widget": "date"}'/><br/></t>
+										<t t-if="data['date_to']"><strong>Date to :</strong> <span t-esc="data['date_to']" t-options='{"widget": "date"}'/></t>
+								</div>
+						</div>
+            <table class="table-condensed sat_table">
+							<t t-foreach="Accounts" t-as="account">
+								<t t-set="encabezado" t-value="account['encabezado']" />
+								<tr style="font-weight: bold;">
+									<td colspan="2"><span t-esc="encabezado['ldate']"/></td>
+									<td><span t-esc="encabezado['journalname']"/></td>
+									<td class="text-right"><span/></td>
+									<td><span/></td>
+								</tr>
+								<tr style="font-weight: bold;">
+									<td class="sat_td">Fecha</td>
+									<td class="sat_td">Codigo</td>
+									<td class="sat_td">Nombre</td>
+									<td class="text-right sat_td">Debe</td>
+									<td class="text-right sat_td">Haber</td>
+								</tr>
+									<tr t-foreach="account['detalle']" t-as="line">
+										<td><span t-esc="line['ldate']" t-options='{"widget": "date"}'/></td>
+										<td><span t-esc="line['acode']"/></td>
+										<td><span t-esc="line['aname']"/></td>
+										<td class="text-right">
+												<span t-esc="line['debit']" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+										</td>
+										<td class="text-right">
+												<span t-esc="line['credit']" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/>
+										</td>
+									</tr>
+										<tr style="font-weight: bold;">
+											<td class="sat_td_stotal"><![CDATA[&nbsp;]]></td>
+											<td class="sat_td_stotal">Total</td>
+											<td class="sat_td_stotal"><![CDATA[&nbsp;]]></td>
+											<td class="text-right sat_td_stotal"><span t-esc="encabezado['debit']" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+											<td class="text-right sat_td_stotal"><span t-esc="encabezado['credit']" t-options="{'widget': 'monetary', 'display_currency': res_company.currency_id}"/></td>
+										</tr>
+							</t>
+						</table>
+					</t>
+			</t>
+		</template>
+	</data>
+</odoo>

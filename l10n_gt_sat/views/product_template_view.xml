@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="product_template_form_dai" model="ir.ui.view">
+    <field name="name">product.template.product.sat.form</field>
+    <field name="model">product.template</field>
+    <field name="inherit_id" ref="product.product_template_form_view"/>
+    <field name="arch" type="xml">
+      <group name="group_general" position="inside">
+        <field name="dai_id"/>
+        <field name="grupo_utilidad_id" groups="purchase.group_purchase_manager"/>
+        <field name="marca_id"/>
+        <field name="sat_tipo_producto" />
+      </group>
+
+      <xpath expr="//page[@name='purchase']" position="attributes">
+                <attribute name="groups">purchase.group_purchase_manager</attribute>
+      </xpath>
+    </field>
+  </record>
+
+  <record model="ir.actions.act_window" id="action_product_dai">
+    <field name="name">Dai</field>
+    <field name="res_model">product.dai</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+  <menuitem name="Derechos Arancelarios (DAI)" id="menu_product_dai" action="action_product_dai" parent="stock.menu_product_in_config_stock"/>
+
+  <record model="ir.actions.act_window" id="action_product_grupo_utilidad">
+    <field name="name">Grupo de Utilidad</field>
+    <field name="res_model">product.grupoutilidad</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+  <menuitem name="Grupo de Utilidad" id="menu_product_grupo_utilidad" action="action_product_grupo_utilidad" parent="stock.menu_product_in_config_stock"/>
+
+  <record model="ir.actions.act_window" id="action_product_marca">
+    <field name="name">Marca</field>
+    <field name="res_model">product.marca</field>
+    <field name="view_mode">tree,form</field>
+  </record>
+
+  <menuitem name="Marca" id="menu_product_marca" action="action_product_marca" parent="stock.menu_product_in_config_stock"/>
+
+  <record id="view_website_product_form" model="ir.ui.view">
+    <field name="name">product.inherited.form</field>
+    <field name="model">product.template</field>
+    <field name="inherit_id" ref="product.product_template_only_form_view"/>
+    <field name="arch" type="xml">
+      <group name="group_standard_price" position="inside">
+          <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+      </group>
+    </field>
+  </record>
+</odoo>
